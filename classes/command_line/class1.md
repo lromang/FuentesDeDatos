@@ -13,7 +13,7 @@ El primer paso funcional cuando nos encontramos dentro de un sistema linux por p
 
 El comando ```pwd``` nos permite identificar nuestra posición actual.
 
-<p style="color:DodgerBlue;">Nota: Lo más probable es que tu ruta tenga la forma ```/dir_1/dir_2/dir_.../.```. Las rutas que comienzan con ```/``` son rutas absolutas, pues parten del directorio raíz ```/```. Las rutas de la forma ```./``` son rutas relativas que parten del directorio en el cual estás ubicad@. <\p>
+<span style="color:blue">Nota: Lo más probable es que tu ruta tenga la forma ```/dir_1/dir_2/dir_.../.```. Las rutas que comienzan con ```/``` son rutas absolutas, pues parten del directorio raíz ```/```. Las rutas de la forma ```./``` son rutas relativas que parten del directorio en el cual estás ubicad@. </span>
 
 
 aa
