@@ -16,8 +16,6 @@ El comando ```pwd``` nos permite identificar nuestra posición actual.
 <span style="color:blue">Nota: Lo más probable es que tu ruta tenga la forma ```/dir_1/dir_2/dir_.../.```. Las rutas que comienzan con ```/``` son rutas absolutas, pues parten del directorio raíz ```/```. Las rutas de la forma ```./``` son rutas relativas que parten del directorio en el cual estás ubicad@. </span>
 
 
-aa
-
 ```ls``` imprime el contenido de dicha ubicación. 
 
 En Bash, los comandos pueden recibir parámetros, en este caso podemos utilizar la opción ```-a``` para listar todos los archivos. Incluso archivos ocultos.
@@ -41,3 +39,11 @@ cd /user/bin
 > Since regular expressions are a fundamental part of the Unix tool-using and tool-building paradigms, any investment you make in learning how to use them, and use them well, well be amply rewarded, multifold, time after time.
 
 
+#### Metacaracteres
+
+- ```\d``` match con cualquier dígito. ```\D```` match con cualquier no dígito. 
+-  ```\w``` hace match con cualquier palabra. ```\W``` hace match con cualquier carcater que no sea una palabra: Los caracteres de palabras incluyen alfanuméricos (-, - and -) y guión bajo (_).
+
+Recursos
+
+- https://regexr.com/
