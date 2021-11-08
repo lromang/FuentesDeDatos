@@ -8,8 +8,8 @@ def validate_coord(coord):
     :param coord: a string to validate
     :return: Valid if it is a validate coordinate, Invalid in any other case
     '''
-    lat_pattern =  # Your code goes here.
-    lon_pattern =  # Your code goes here.
+    lat_pattern =  # Your code goes here
+    lon_pattern =  # Your code goes here
     pattern = fr'{lat_pattern}, {lon_pattern}'
     if bool(re.search(pattern, coord)):
         return 'Valid'
