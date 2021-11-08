@@ -44,6 +44,11 @@ cd /user/bin
 - ```\d``` match con cualquier dígito. ```\D```` match con cualquier no dígito. 
 -  ```\w``` hace match con cualquier palabra. ```\W``` hace match con cualquier carcater que no sea una palabra: Los caracteres de palabras incluyen alfanuméricos (-, - and -) y guión bajo (_).
 
+## Proyecto
+
+- Análisis semántico de stack exchange. Generar un crawler de preguntas y respuestas. 
+
+
 Recursos
 
 - https://regexr.com/
