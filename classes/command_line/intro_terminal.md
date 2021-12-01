@@ -42,7 +42,7 @@ Es fundamental para todo programa no trivial poder almacenar entradas y salidas 
 
 Para que un programa pueda realizar operaciones interesantes, es necesario contar con la capacidad de tomar decisiones basadas en condiciones. Estas condiciones pueden depender del valor de una variable o del resultado de ejecución de un programa. La estructura fundamental para el control de flujo es la sentencia ``ìf```. La estructura general es la siguiente: 
 
-```console
+```shell
 if expresion
 then
 exec true
