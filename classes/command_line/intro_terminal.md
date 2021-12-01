@@ -34,6 +34,32 @@ Por ejemplo:
 cd /user/bin
 ```
 
+## Variables
+
+Es fundamental para todo programa no trivial poder almacenar entradas y salidas de información dentro de variables. Si bien la gran mayoría de las operaciones que realizaremos en BASH serán sobre texto, las operaciones aritméticas son sumamente importantes. Para esto, la terminal provee un ambiente que permite realizar este tipo de operacioens. ```$((...))```. 
+
+## Decisiones
+
+Para que un programa pueda realizar operaciones interesantes, es necesario contar con la capacidad de tomar decisiones basadas en condiciones. Estas condiciones pueden depender del valor de una variable o del resultado de ejecución de un programa. La estructura fundamental para el control de flujo es la sentencia ``ìf```. La estructura general es la siguiente: 
+
+```
+if expresion
+then
+exec true
+elif expresion
+then 
+exec true
+else
+exec false
+fi
+```
+
+Para negar el valor de una proposición se usa el caracter ```!```. De la misma manera, podemos estar interesados en probar múltiples condiciones. Para esto contamos con los símbolos ```&&``` y ```||```. 
+
+
+Así mismo, existe un comando de conveniencia llamado ```test```. Este realiza la función de correr y determinar la salida de ejecucón de una instrucción. 
+
+
 ## Expresiones Regulares
 
 > Since regular expressions are a fundamental part of the Unix tool-using and tool-building paradigms, any investment you make in learning how to use them, and use them well, well be amply rewarded, multifold, time after time.
@@ -43,10 +69,17 @@ cd /user/bin
 
 - ```\d``` match con cualquier dígito. ```\D```` match con cualquier no dígito. 
 -  ```\w``` hace match con cualquier palabra. ```\W``` hace match con cualquier carcater que no sea una palabra: Los caracteres de palabras incluyen alfanuméricos (-, - and -) y guión bajo (_).
+- ```|``` se alterna entre un grupo de posibles expresiones. NOTA: este caracter tiene la menor precedencia dentro de las expresiones regulares. 
+
+
+Además de los patrones que hemos investigado hasta ahora, hay una manera de aumentar signficativamente el poder de las expresiones regulares. Esto es, agregando memoria. En forma de patraones que upeden ser referenciados. Esto se logra encerrando la expresión deseada entre ```\(, \)```. Estas expresiones pueden ser referidas utilizando la sintáxis ```\digit``` en donde digit es el orden de agrupación de la expresión (con un máximo de nueve referencias)
+
+con los caracteres ```^``` y ```$``` sirven para anclar las expresiones, ya sea al principio o al final de una expresión. `
 
 ## Proyecto
 
 - Análisis semántico de stack exchange. Generar un crawler de preguntas y respuestas. 
+
 
 
 Recursos
