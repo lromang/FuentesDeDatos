@@ -38,6 +38,30 @@ cd /user/bin
 
 Es fundamental para todo programa no trivial poder almacenar entradas y salidas de información dentro de variables. Si bien la gran mayoría de las operaciones que realizaremos en BASH serán sobre texto, las operaciones aritméticas son sumamente importantes. Para esto, la terminal provee un ambiente que permite realizar este tipo de operacioens. ```$((...))```. 
 
+Las variables se asignan usando el signo de ```=``` y pueden ser referidas usando el prefijo ```$```. Nota la ausencia de espacios en la asignación. 
+
+```shell
+a=$((20 + 3.5))
+echo $a
+```
+
+Dos comandos útiles que nos permiten verificar si una variable existe y es no nula.  ```${var:-val}```, ```${var:=val}```. En ambos casos, de existir y ser no nula, se regresa el valor de la variable. En caso contrario, con el primer comando regresamos el valor alternativo *val* y con el segundo comando se asigna *val* a *var*.
+
+```shell
+b=''
+echo ${b:-3}
+echo ${b:=5}
+echo $b
+```
+
+Dentro de un script de bash o dentro de una función, los parámetros pueden ser referenciados utilizando la sintaxis ```${num_var}``` en donde *num_var* es el número del argumento. De igual forma podemos referirnos al último argumento usando ```${!#}```. Finalmente hay una serie de comandos que nos permiten hacer referencias más generales.  De la misma forma, podemos obtener el número total de argumentos usando la sintaxis 
+
+* ```$#```: Nos indica el número de argumentos.
+* ```$*```: Obtiene el total de argumentos.
+* ```"$@"```: Representa todos los argumentos como strings individuales. 
+
+Después de ejecutar un script podemos acceder al estatus de ejecución con ```$?```, en caso de éxito será 0, cualquier otro valor implica error. 
+
 ## Decisiones
 
 Para que un programa pueda realizar operaciones interesantes, es necesario contar con la capacidad de tomar decisiones basadas en condiciones. Estas condiciones pueden depender del valor de una variable o del resultado de ejecución de un programa. La estructura fundamental para el control de flujo es la sentencia ``ìf```. La estructura general es la siguiente: 
@@ -58,6 +82,12 @@ Para negar el valor de una proposición se usa el caracter ```!```. De la misma 
 
 
 Así mismo, existe un comando de conveniencia llamado ```test```. Este realiza la función de correr y determinar la salida de ejecucón de una instrucción. 
+
+
+## Iteraciones - bucles
+
+
+## I/O
 
 
 ## Expresiones Regulares
