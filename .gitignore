@@ -1,4 +1,6 @@
+.DS_Store
 books
 classes/command_line/.idea
 classes/command_line/tests
 classes/ans
+projects/ans
