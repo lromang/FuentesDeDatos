@@ -95,7 +95,31 @@ Así mismo, existe un comando de conveniencia llamado ```test```. Este realiza l
 > Since regular expressions are a fundamental part of the Unix tool-using and tool-building paradigms, any investment you make in learning how to use them, and use them well, well be amply rewarded, multifold, time after time.
 
 
+Las expresiones regulares son clave para generar rutinas de procesamiento de texto poderosas, flexibles y eficientes. Estas representan una familia generalizada de patrones de lenguaje y, junto con el soporte de la herramienta sobre la cual las utilizas, pueden agregar, eliminar o aislar todo tipo de dato textual.
+
+En su funcionalidad más esencial, las expresiones funcionan como un buscador de secuencias de carácteres. Por ejemplo, la expresión regular 'Hola Mundo' buscará todas las instancias de texto en donde la cadena de caracteres 'H', 'o', 'l', 'a', ' ', 'M', 'u', 'n', 'd', 'o' se encuentra (en ese preciso orden). Para extender la capacidad de dichas expresiones, es necesario recurrir a los metacaracteres. 
+
 #### Metacaracteres
+
+* Start and end of a line 
+- Of a word '\<' '\>'
+
+* Character classes
+- Negation of character classes
+- Wildcards '.'
+
+* Alternation
+
+* Optional items and quantifiers
+- Escaping metacaracteres for textual matching. 
+
+* Backreferences
+
+##### Excercises
+
+* Match words within quotations. 
+* Hour of the day
+* Lat long
 
 - ```\d``` match con cualquier dígito. ```\D```` match con cualquier no dígito. 
 -  ```\w``` hace match con cualquier palabra. ```\W``` hace match con cualquier carcater que no sea una palabra: Los caracteres de palabras incluyen alfanuméricos (-, - and -) y guión bajo (_).

@@ -1,8 +1,8 @@
 #! /bin/bash
 
-# exec: gsed -nEf get_libraries.sh
+# exec: gsed -nEf get_bookshelves_list
 
 /.*bookshelf_pages.*/,/.*content ending.*/{
-    s|.*bookshelf/([0-9]+)|\1|gp
+    s|.*bookshelf/#your code goes here|\1|gp
     s| title=([^>]+).*$|\1|gp
 }
