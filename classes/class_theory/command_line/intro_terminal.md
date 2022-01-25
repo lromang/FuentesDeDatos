@@ -34,6 +34,14 @@ Por ejemplo:
 cd /user/bin
 ```
 
+Además de esto es fundamental poder interactuar con archivos. Los comandos más utilizados son:
+
+* ```touch```: permite crear un archivo bajo un nombre específico. 
+* ```cat```, ```head```, ```tail```: muestran contenido parcial o total del archivo.
+* ```mv```, ```cp```, ```rm```: mueven, copian y eliminan archivos.
+
+Uno de los conceptos más fundamentales dentro de bash (y muchos otros lenguajes que cubriremos en el curso) es el *pipelining* de instrucciones. En terminos generales, esto nos permite concatenar la ejecución de multiples subrutinas. El commando que nos permite llevar esto a cabo es ```|```. 
+
 ## Variables
 
 Es fundamental para todo programa no trivial poder almacenar entradas y salidas de información dentro de variables. Si bien la gran mayoría de las operaciones que realizaremos en BASH serán sobre texto, las operaciones aritméticas son sumamente importantes. Para esto, la terminal provee un ambiente que permite realizar este tipo de operacioens. ```$((...))```. 
@@ -53,14 +61,6 @@ echo ${b:-3}
 echo ${b:=5}
 echo $b
 ```
-
-Dentro de un script de bash o dentro de una función, los parámetros pueden ser referenciados utilizando la sintaxis ```${num_var}``` en donde *num_var* es el número del argumento. De igual forma podemos referirnos al último argumento usando ```${!#}```. Finalmente hay una serie de comandos que nos permiten hacer referencias más generales.  De la misma forma, podemos obtener el número total de argumentos usando la sintaxis 
-
-* ```$#```: Nos indica el número de argumentos.
-* ```$*```: Obtiene el total de argumentos.
-* ```"$@"```: Representa todos los argumentos como strings individuales. 
-
-Después de ejecutar un script podemos acceder al estatus de ejecución con ```$?```, en caso de éxito será 0, cualquier otro valor implica error. 
 
 ## Decisiones
 
@@ -86,56 +86,36 @@ Así mismo, existe un comando de conveniencia llamado ```test```. Este realiza l
 
 ## Iteraciones - bucles
 
+El bucle ```for``` itera sobre una lista de objetos, ejecutando el cuerpo de instrucciones para cada objeto de manera individual. 
+
+```shell
+for i in expression
+do
+exec
+done
+```
+
+El bucle ```while``` por su parte, itera hasta que cierta condición deja de cumplirse. 
+
+```shell
+while expression
+do
+exec
+done
+```
+
+Es posible interrumpir un bucle de manera prematura usando la instrucción ```break```. 
 
 ## I/O
 
+Cuando nuestros scripts crecen demasiado en tamaño y complejidad, deja de ser conveniente ejecutarlos sobre la línea de comandos, en lugar de esto, definimos archivos que contengan las instrucciones y puedan ser ejecutados directamente desde la consola. 
 
-## Expresiones Regulares
+El header de estos archivos debe tener la siguiente forma: "#! /path/to/interpreter" en donde el interprete es el programa que consumirá el archivo.
 
-> Since regular expressions are a fundamental part of the Unix tool-using and tool-building paradigms, any investment you make in learning how to use them, and use them well, well be amply rewarded, multifold, time after time.
+Dentro de un script, se puede leer insumos del usuario usando la sentencia ```read``` y  los argumentos de usuario pueden ser referenciados utilizando la sintaxis ```${num_var}``` en donde *num_var* es el número del argumento. De igual forma podemos referirnos al último argumento usando ```${!#}```. Finalmente hay una serie de comandos que nos permiten hacer referencias más generales.  De la misma forma, podemos obtener el número total de argumentos usando la sintaxis 
 
+* ```$#```: Nos indica el número de argumentos.
+* ```$*```: Obtiene el total de argumentos.
+* ```"$@"```: Representa todos los argumentos como strings individuales. 
 
-Las expresiones regulares son clave para generar rutinas de procesamiento de texto poderosas, flexibles y eficientes. Estas representan una familia generalizada de patrones de lenguaje y, junto con el soporte de la herramienta sobre la cual las utilizas, pueden agregar, eliminar o aislar todo tipo de dato textual.
-
-En su funcionalidad más esencial, las expresiones funcionan como un buscador de secuencias de carácteres. Por ejemplo, la expresión regular 'Hola Mundo' buscará todas las instancias de texto en donde la cadena de caracteres 'H', 'o', 'l', 'a', ' ', 'M', 'u', 'n', 'd', 'o' se encuentra (en ese preciso orden). Para extender la capacidad de dichas expresiones, es necesario recurrir a los metacaracteres. 
-
-#### Metacaracteres
-
-* Start and end of a line 
-- Of a word '\<' '\>'
-
-* Character classes
-- Negation of character classes
-- Wildcards '.'
-
-* Alternation
-
-* Optional items and quantifiers
-- Escaping metacaracteres for textual matching. 
-
-* Backreferences
-
-##### Excercises
-
-* Match words within quotations. 
-* Hour of the day
-* Lat long
-
-- ```\d``` match con cualquier dígito. ```\D```` match con cualquier no dígito. 
--  ```\w``` hace match con cualquier palabra. ```\W``` hace match con cualquier carcater que no sea una palabra: Los caracteres de palabras incluyen alfanuméricos (-, - and -) y guión bajo (_).
-- ```|``` se alterna entre un grupo de posibles expresiones. NOTA: este caracter tiene la menor precedencia dentro de las expresiones regulares. 
-
-
-Además de los patrones que hemos investigado hasta ahora, hay una manera de aumentar signficativamente el poder de las expresiones regulares. Esto es, agregando memoria. En forma de patraones que upeden ser referenciados. Esto se logra encerrando la expresión deseada entre ```\(, \)```. Estas expresiones pueden ser referidas utilizando la sintáxis ```\digit``` en donde digit es el orden de agrupación de la expresión (con un máximo de nueve referencias)
-
-con los caracteres ```^``` y ```$``` sirven para anclar las expresiones, ya sea al principio o al final de una expresión. `
-
-## Proyecto
-
-- Análisis semántico de stack exchange. Generar un crawler de preguntas y respuestas. 
-
-
-
-Recursos
-
-- https://regexr.com/
+Después de ejecutar un script podemos acceder al estatus de ejecución con ```$?```, en caso de éxito será 0, cualquier otro valor implica error. 
