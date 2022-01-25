@@ -1,4 +1,4 @@
-# FuentesDeDatos
+# Fuentes de datos
 
 ![](./course_generals/itam_logo.png)
 
