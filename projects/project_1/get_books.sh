@@ -1,6 +1,8 @@
 # ----------------------------------------
-# This script downloads n random books from
-# a given library.
+# This script downloads n random books (with replacement)
+# from a given bookshelf. If n > number of
+# books in library, you should deterministaclly
+# download all books.
 # Input:
 # - library_id: id of library to download.
 # - n: number of random books to download.
@@ -16,9 +18,6 @@ n=$2
 env_dir=$3
 samp=1
 
-##################################################
-# YOUR CODE GOES HERE
-##################################################
 if [ ! -d "$env_dir/texts/$bookshelf_id" ]
 then
     mkdir "$env_dir/texts/$bookshelf_id"
@@ -36,8 +35,12 @@ fi
 
 for i in `seq $n`
 do
-    book=$(($samp*(($RANDOM % $n_books) + 1) + $i*(1-$samp)))
+    ###################################################
     # YOUR CODE GOES HERE
+    # TODO: get the information related with the queried
+    # book and download the main contents to the desire location.
+    ###################################################
+    book_path="$env_dir/texts/$bookshelf_id/$book_id"
     if [ ! -d "$book_path" ]
     then
         mkdir $book_path
