@@ -81,7 +81,7 @@ fi
 Para negar el valor de una proposición se usa el caracter ```!```. De la misma manera, podemos estar interesados en probar múltiples condiciones. Para esto contamos con los símbolos ```&&``` y ```||```. 
 
 
-Así mismo, existe un comando de conveniencia llamado ```test```. Este realiza la función de correr y determinar la salida de ejecucón de una instrucción. 
+Así mismo, existe un comando de conveniencia llamado ```test```. Este realiza la función de correr y determinar la salida de ejecucón de una instrucción. Esto es equivalent a usar `[]` para profundizar en las diferencias entre ```[]``` y  ```[[]]``` ver este [hilo](https://stackoverflow.com/questions/3427872/whats-the-difference-between-and-in-bash). 
 
 
 ## Iteraciones - bucles
