@@ -39,6 +39,7 @@ Además de esto es fundamental poder interactuar con archivos. Los comandos más
 * ```touch```: permite crear un archivo bajo un nombre específico. 
 * ```cat```, ```head```, ```tail```: muestran contenido parcial o total del archivo.
 * ```mv```, ```cp```, ```rm```: mueven, copian y eliminan archivos.
+* ```find```: encuentra archivos o directorios (en conjunto con exec, este comando se puede volver sumamente poderoso).
 
 Uno de los conceptos más fundamentales dentro de bash (y muchos otros lenguajes que cubriremos en el curso) es el *pipelining* de instrucciones. En terminos generales, esto nos permite concatenar la ejecución de multiples subrutinas. El commando que nos permite llevar esto a cabo es ```|```. 
 
