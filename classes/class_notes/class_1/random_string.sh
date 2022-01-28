@@ -3,7 +3,7 @@
 # ----------------------------------------
 # Con este script construimos strings
 # aleatorios. Conceptualmente, lo más importante
-# es notar que se puede iterar sobre el resultado
+# es recordar que se puede iterar sobre el resultado
 # de cualquier comando.{a..z}, $(ls), $(echo ...)
 # El loop while es una mezcla de if y for
 # Iteras hasta cumplir una condición.
