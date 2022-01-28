@@ -17,18 +17,32 @@
 #     strings 'aleatorios' de longitud
 #     10.
 #
-# HINT:  Classic Shell Scripting
+# HINT1:  Classic Shell Scripting
 #        Table 6-6. test expressions
-#
+# HINT2: Puedes salir de un loop con break.
 # ----------------------------------------
 
 r_string=''
-for letter in {a..z}
-do
-    if [[ $(($RANDOM % 2)) == 0 ]]
-    then
-        r_string+="$letter"
-    fi
-done
+
+# ----------------------------------------
+# Your goes code here:
+# Begin while
+# test contion ${#r_string} -lt X.
+# ----------------------------------------
+    for letter in {a..z}
+    do
+        if [[ $(($RANDOM % 2)) == 0 ]]
+        then
+            r_string+="$letter"
+            # ----------------------------------------
+            # Exit condition
+            # Your code goes here
+            # ----------------------------------------
+        fi
+    done
+# ----------------------------------------
+    # End while
+    # Your code goes here
+# ----------------------------------------
 
 echo $r_string
