@@ -1,7 +1,7 @@
 #! /bin/bash
 
 # ----------------------------------------
-# Con este oneliner, extraje los nombres
+# Con este one-liner, extraje los nombres
 # de los equipos y generé un directorio
 # con el mismo nombre dentro de homework.
 # ¿Qué es lo que hace mi expresión regular?

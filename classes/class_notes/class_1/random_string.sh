@@ -25,9 +25,9 @@
 r_string=''
 
 # ----------------------------------------
-# Your goes code here:
+# Your code goes here:
 # Begin while
-# test contion ${#r_string} -lt X.
+# test condition ${#r_string} -lt X.
 # ----------------------------------------
     for letter in {a..z}
     do
