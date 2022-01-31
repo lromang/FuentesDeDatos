@@ -9,4 +9,4 @@
 # piensa en el string: aaa.bbb.ccc
 # ----------------------------------------
 
-for students in $(ls ../../course_generals/teams/ | grep -Eo '^[^\.]+' ); do mkdir $students; done
+for students in $(ls ../../course_generals/teams/ | grep -Eo '^[^\.]+' ); do mkdir $students; mkdir "$students/homework_1/"; done
