@@ -1,0 +1,4 @@
+EquipoA,0
+EquipoB,0
+EquipoC,0
+RegistroEquipo,0
