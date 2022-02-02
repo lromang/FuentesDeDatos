@@ -8,7 +8,8 @@
 # -> | team, score |
 # ----------------------------------------
 
-home_dir=${1:-"/Users/luis/Documents/Projects/Teaching/ITAM/FuentesDeDatos"}
+# Replace "" with absolute path to home_dir: FuentesDeDatos
+home_dir=${1:-""}
 team_dir="$home_dir/course_generals/teams"
 part_file="$home_dir/course_generals/teams/.all_teams.txt"
 # Check if it is a valid directory
