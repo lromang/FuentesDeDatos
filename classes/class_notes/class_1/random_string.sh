@@ -23,12 +23,15 @@
 # ----------------------------------------
 
 r_string=''
+string_length="${1:-10}"
 
 # ----------------------------------------
 # Your code goes here:
 # Begin while
 # test condition ${#r_string} -lt X.
-# ----------------------------------------
+while [[ ${#r_string} -lt $string_length ]]
+do
+    # ----------------------------------------
     for letter in {a..z}
     do
         if [[ $(($RANDOM % 2)) == 0 ]]
@@ -37,10 +40,15 @@ r_string=''
             # ----------------------------------------
             # Exit condition
             # Your code goes here
+            if [[ ${#r_string} -gt $string_length ]]
+            then
+                break
+            fi
             # ----------------------------------------
         fi
     done
-# ----------------------------------------
+    # ----------------------------------------
+    done
     # End while
     # Your code goes here
 # ----------------------------------------
