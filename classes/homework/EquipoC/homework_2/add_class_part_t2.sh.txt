@@ -1,0 +1,25 @@
+#! /bin/bash
+
+# ----------------------------------------
+# This script adds a participation point
+# to a given team.
+# 1.- Take a look at the bash script
+#     try to put in words its functionality.
+# R1.-	The script takes a list of "teams" and pairs
+#	them with participation points in the class.
+# 2.- Replace this code with a loop in plain bash.
+# R2.-	Done in class.
+# 3.- Which implementation is more convenient.
+# R3.-	We like more the loop one, because it
+#	sinegrgyces better going over the teams.
+# ----------------------------------------
+
+home_dir=${1:-./}
+team=$2
+points=${3:-1}
+file_path="$home_dir/course_generals/teams/.all_teams.txt"
+aux_path="$home_dir/course_generals/teams/team_aux.txt"
+
+cat $file_path | grep -Ev '^$' | awk -F ',' -v points="$points" -v team="$team" '{if ($1 ~ team) print $1 "," $2 + points; else print $1 "," $2}' >> $aux_path
+
+mv $aux_path $file_path
