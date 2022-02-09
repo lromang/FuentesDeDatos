@@ -25,4 +25,4 @@ do
     read letter
 done
 # Get top words.
-cat crime.txt | gsed -E 's/[^A-Za-z ]//g' | grep -v '^$' | grep -ioE '[a-z]+' | tr '[:upper:]' '[:lower:]' | grep -E "^$letter+" | sort | uniq -c | sort -nr | head -n $top
+cat crime.txt | gsed -E 's/[^A-Za-z ]//g' | grep -v '^$' | grep -ioE '[a-z]+' | tr '[:upper:]' '[:lower:]' | grep -E "^$letter.+" | sort | uniq -c | sort -nr | head -n $top
