@@ -1,0 +1,20 @@
+#! /bin/bash
+
+# ----------------------------------------
+# Get the top N (default 10) characters
+# in Macbeth.
+# Why it is necessary to sort twice?
+#	Because the sortings are different:
+#	sort is default, sort -nr is to sort in 
+#	numerical reverse order. Also, between the
+#	two sorts, uniq -c also afects the output.
+# What does 'uniq -c' do?
+#	Counts how many times an expression is repeated
+# Relace the regex with: '\w+'. Explain.
+#	This would match any word char in mac.txt. It is
+#	an alternative to '^[A-Z]+\.$'
+# ----------------------------------------
+
+# top characters
+top=${1:-10}
+cat mac.txt | tr '\r' '\n' | grep -Eo '\w+' | sort | uniq -c | sort -nr | head -n $top
