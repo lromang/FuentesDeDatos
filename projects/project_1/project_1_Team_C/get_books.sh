@@ -1,3 +1,5 @@
+#! /bin/bash
+
 # ----------------------------------------
 # This script downloads n random books (with replacement)
 # from a given bookshelf. If n > number of
