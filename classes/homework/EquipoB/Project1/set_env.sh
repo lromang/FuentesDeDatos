@@ -27,29 +27,11 @@ if [ "$set_env" = "y" ]
        read new_dir
        while [ 1 ]
        do
-           # ----------------------------------------
-           # Ask the user to provide a valid path for
-           # the environment.
-           # ----------------------------------------
-
-           ###################################################
         while [[ ! -d $new_dir ]]
        	do
-           # ----------------------------------------
-           # Ask the user to provide a valid path for
-           # the environment.
-           # ----------------------------------------
         echo "Not a valid path. Please provide a valid path."
         read new_dir
         done
-           ###################################################
-
-           # ----------------------------------------
-           # Check if the entered path is empty
-           # ----------------------------------------
-
-           ###################################################
-           # YOUR CODE GOES HERE
            [ "$(ls -A $new_dir)" ] && echo "Not Empty" || echo "Empty"
            ###################################################
 
