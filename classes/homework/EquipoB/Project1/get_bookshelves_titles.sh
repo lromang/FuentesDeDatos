@@ -24,7 +24,7 @@ then
     echo "New bookshelf, downloading data..."
     mkdir $output_dir
     curl -s $bookshelf_url | sed -n -e 's:.*href="/ebooks/\([0-9]*\)".*:\1:p' >$output_dir/titles.txt
-    #El sed va al url y busca la linea que empieza que contiene href, extrae /ebooks/un numero que está ahí y lo que sigue y lo guarda en el archivo de tittles.txt 
+    #El sed va al url y busca la línea que empieza que contiene href, extrae /ebooks/un numero que está ahí y lo que sigue y lo guarda en el archivo de tittles.txt 
     cat $output_dir/titles.txt
 else
     echo "Loading bookshelf"
