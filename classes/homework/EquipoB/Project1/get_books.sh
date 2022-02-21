@@ -35,12 +35,6 @@ fi
 
 for i in `seq $n`
 do
-    ###################################################
-    # YOUR CODE GOES HERE
-    # TODO: get the information related with the queried
-    # book and download the main contents to the desire location.
-    ###################################################
-    
     
     let book_rdm=$((RANDOM%$n_books+1))
     book_id=$(sed -n ''$book_rdm' p' $env_dir/bookshelves/$bookshelf_id/titles.txt)
