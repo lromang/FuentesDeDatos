@@ -28,11 +28,6 @@ do
     then
        break
     fi
-    # ----------------------------------------
-    # Query library url
-    # TODO: get the bookshelf url belonging
-    # to the selected id.
-    # ----------------------------------------
     #bookshelf_url=$(grep "$bookshelf" bookshelves.txt|awk -F ',' '{print $3}')
     bookshelf_url=https://www.gutenberg.org/ebooks/bookshelf/$bookshelf
     echo "$bookshelf_url"
