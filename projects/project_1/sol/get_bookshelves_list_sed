@@ -1,0 +1,15 @@
+#! /bin/bash
+
+# exec: gsed -nEf get_libraries.sh
+
+
+# /.*bookshelf_pages.*/,/.*content ending.*/{
+#    s|.*bookshelf/#your code goes here|\1|gp
+#    s| title=([^>]+).*$|\1|gp
+#}
+
+
+/.*bookshelf_pages.*/,/.*content ending.*/{
+    s|.*bookshelf/([0-9]+)|\1|gp
+    s| title=([^>]+).*$|\1|gp
+}
