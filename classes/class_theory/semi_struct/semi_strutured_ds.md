@@ -1,15 +1,11 @@
 # Estructura en los datos
 
-Hasta ahora hemos trabajado con fuentes de datos libres de estructura, principalmente en la forma de texto libre. Cuando empezamos a trabajar con **AWK** notamos que en ocasiones es conveniente introducir abstracciones que nos permitan ordenar y accesar a los datos de manera estructurada; por ejemplo, en la forma de campos (fields) y registros (registers).
+Hasta ahora hemos trabajado con fuentes de datos no estructuradas, principalmente en la forma de texto libre. Cuando empezamos a trabajar con **AWK** notamos que en ocasiones es conveniente introducir abstracciones que nos permitan ordenar y accesar a los datos de forma estructurada; por ejemplo, en la forma de campos (fields) y registros (registers). Si bien esta manera de organizar los datos es adecuada para una gran gamma de aplicaciones, veremos que hay casos en los cuáles los datos parecen tener una estructura jerarquica. Para esto tendremos que usar otro tipo de abstracciones que eventualmente demarcarán dos grandes familias de datos, los estructurados y los no estrucutrados.
 
 
-## CSV, TSV, PSV, ...
+## Formatos tabulares (CSV, TSV, PSV, ...)
 
-Este es sin duda el formato tabular más utilizado en  la actualidad. La idea es separar cada campo de un registro por un caracter especial. Este puede ser: ',', ' ', 't', '|', etc. La manera en la que separamos los registros es a través de salto de línea. Cómo hemos visto previamente **AWK** posee una interfáz que nos permite trabajar de manera cómoda con esta estructura. Adicionalmente a este lenguaje, hay una serie de librerías que facilitan la búsqueda y manipulación de este tipo de formatos sobre la línea de comandos. En este curso nos enfocaremos en dos: 
-
-### CUT
-
-
+Este es sin duda la estructura de datos más utilizada en aplicaciones con estructuras relacionales. La idea es separar cada campo de un registro por un caracter especial. Este puede ser: ',', ' ', 't', '|', etc. La manera en la que separamos los registros es a través de salto de línea. Cómo hemos visto previamente **AWK** posee una interfáz que nos permite trabajar de manera cómoda con esta estructura. Adicionalmente a este lenguaje, hay una serie de librerías que facilitan la búsqueda y manipulación de este tipo de formatos sobre la línea de comandos. En este curso nos enfocaremos en dos:
 
 ### CSVKIT
 
@@ -46,7 +42,6 @@ csvcut -c c1, c2, c3 data.csv | csvstat
 ```
 head data.csv | csvgrep -c col -r regex
 ```
-
 
 Más importante de todo. Te ayuda a deshacerte de excel. 
 
