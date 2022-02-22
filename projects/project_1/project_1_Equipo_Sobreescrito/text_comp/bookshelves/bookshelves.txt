@@ -1,0 +1,338 @@
+420	"6 Best Loved Spanish Literary Classics"	https://www.gutenberg.org/ebooks/bookshelf/420
+82	"Adventure"	https://www.gutenberg.org/ebooks/bookshelf/82
+5	"Africa"	https://www.gutenberg.org/ebooks/bookshelf/5
+6	"African American Writers"	https://www.gutenberg.org/ebooks/bookshelf/6
+195	"Ainslee's"	https://www.gutenberg.org/ebooks/bookshelf/195
+196	"American Revolutionary War"	https://www.gutenberg.org/ebooks/bookshelf/196
+7	"Anarchism"	https://www.gutenberg.org/ebooks/bookshelf/7
+150	"Animal"	https://www.gutenberg.org/ebooks/bookshelf/150
+151	"Animals-Domestic"	https://www.gutenberg.org/ebooks/bookshelf/151
+154	"Animals-Wild-Birds"	https://www.gutenberg.org/ebooks/bookshelf/154
+155	"Animals-Wild-Insects"	https://www.gutenberg.org/ebooks/bookshelf/155
+156	"Animals-Wild-Mammals"	https://www.gutenberg.org/ebooks/bookshelf/156
+157	"Animals-Wild-Reptiles and Amphibians"	https://www.gutenberg.org/ebooks/bookshelf/157
+153	"Animals-Wild-Trapping"	https://www.gutenberg.org/ebooks/bookshelf/153
+152	"Animals-Wild"	https://www.gutenberg.org/ebooks/bookshelf/152
+8	"Anthropology"	https://www.gutenberg.org/ebooks/bookshelf/8
+9	"Archaeology"	https://www.gutenberg.org/ebooks/bookshelf/9
+10	"Architecture"	https://www.gutenberg.org/ebooks/bookshelf/10
+112	"Argentina"	https://www.gutenberg.org/ebooks/bookshelf/112
+197	"Armour's Monthly Cook Book"	https://www.gutenberg.org/ebooks/bookshelf/197
+11	"Art"	https://www.gutenberg.org/ebooks/bookshelf/11
+160	"Arthurian Legends"	https://www.gutenberg.org/ebooks/bookshelf/160
+198	"Astounding Stories"	https://www.gutenberg.org/ebooks/bookshelf/198
+101	"Astronomy"	https://www.gutenberg.org/ebooks/bookshelf/101
+199	"Atheism"	https://www.gutenberg.org/ebooks/bookshelf/199
+113	"Australia"	https://www.gutenberg.org/ebooks/bookshelf/113
+114	"Bahá'í Faith"	https://www.gutenberg.org/ebooks/bookshelf/114
+422	"Banned Books List from the American Library Association"	https://www.gutenberg.org/ebooks/bookshelf/422
+336	"Banned Books from Anne Haight's list"	https://www.gutenberg.org/ebooks/bookshelf/336
+200	"Barnavännen"	https://www.gutenberg.org/ebooks/bookshelf/200
+159	"Bestsellers, American, 1895-1923"	https://www.gutenberg.org/ebooks/bookshelf/159
+13	"Best Books Ever Listings"	https://www.gutenberg.org/ebooks/bookshelf/13
+15	"Bibliomania"	https://www.gutenberg.org/ebooks/bookshelf/15
+16	"Biographies"	https://www.gutenberg.org/ebooks/bookshelf/16
+201	"Biology"	https://www.gutenberg.org/ebooks/bookshelf/201
+202	"Bird-Lore"	https://www.gutenberg.org/ebooks/bookshelf/202
+203	"Birds, Illustrated by Color Photography"	https://www.gutenberg.org/ebooks/bookshelf/203
+204	"Blackwood's Edinburgh Magazine"	https://www.gutenberg.org/ebooks/bookshelf/204
+137	"Boer War"	https://www.gutenberg.org/ebooks/bookshelf/137
+115	"Botany"	https://www.gutenberg.org/ebooks/bookshelf/115
+205	"British Law"	https://www.gutenberg.org/ebooks/bookshelf/205
+206	"Buchanan's Journal of Man"	https://www.gutenberg.org/ebooks/bookshelf/206
+116	"Buddhism"	https://www.gutenberg.org/ebooks/bookshelf/116
+117	"Bulgaria"	https://www.gutenberg.org/ebooks/bookshelf/117
+207	"Bulletin de Lille"	https://www.gutenberg.org/ebooks/bookshelf/207
+181	"CIA World Factbooks"	https://www.gutenberg.org/ebooks/bookshelf/181
+148	"Camping"	https://www.gutenberg.org/ebooks/bookshelf/148
+118	"Canada"	https://www.gutenberg.org/ebooks/bookshelf/118
+208	"Canon Law"	https://www.gutenberg.org/ebooks/bookshelf/208
+209	"Celtic Magazine"	https://www.gutenberg.org/ebooks/bookshelf/209
+210	"Chambers's Edinburgh Journal"	https://www.gutenberg.org/ebooks/bookshelf/210
+211	"Chemistry"	https://www.gutenberg.org/ebooks/bookshelf/211
+212	"Child's Own Book of Great Musicians"	https://www.gutenberg.org/ebooks/bookshelf/212
+213	"Children's Anthologies"	https://www.gutenberg.org/ebooks/bookshelf/213
+214	"Children's Biography"	https://www.gutenberg.org/ebooks/bookshelf/214
+17	"Children's Book Series"	https://www.gutenberg.org/ebooks/bookshelf/17
+18	"Children's Fiction"	https://www.gutenberg.org/ebooks/bookshelf/18
+19	"Children's History"	https://www.gutenberg.org/ebooks/bookshelf/19
+215	"Children's Instructional Books"	https://www.gutenberg.org/ebooks/bookshelf/215
+20	"Children's Literature"	https://www.gutenberg.org/ebooks/bookshelf/20
+216	"Children's Myths, Fairy Tales, etc."	https://www.gutenberg.org/ebooks/bookshelf/216
+22	"Children's Picture Books"	https://www.gutenberg.org/ebooks/bookshelf/22
+217	"Children's Religion"	https://www.gutenberg.org/ebooks/bookshelf/217
+218	"Children's Verse"	https://www.gutenberg.org/ebooks/bookshelf/218
+119	"Christianity"	https://www.gutenberg.org/ebooks/bookshelf/119
+23	"Christmas"	https://www.gutenberg.org/ebooks/bookshelf/23
+24	"Classical Antiquity"	https://www.gutenberg.org/ebooks/bookshelf/24
+25	"Contemporary Reviews"	https://www.gutenberg.org/ebooks/bookshelf/25
+219	"Continental Monthly"	https://www.gutenberg.org/ebooks/bookshelf/219
+419	"Cookbooks and Cooking"	https://www.gutenberg.org/ebooks/bookshelf/419
+27	"Crafts"	https://www.gutenberg.org/ebooks/bookshelf/27
+28	"Crime Fiction"	https://www.gutenberg.org/ebooks/bookshelf/28
+29	"Crime Nonfiction"	https://www.gutenberg.org/ebooks/bookshelf/29
+220	"Current History"	https://www.gutenberg.org/ebooks/bookshelf/220
+120	"Czech"	https://www.gutenberg.org/ebooks/bookshelf/120
+377	"DE Drama"	https://www.gutenberg.org/ebooks/bookshelf/377
+376	"DE Kinderbuch"	https://www.gutenberg.org/ebooks/bookshelf/376
+375	"DE Lyrik"	https://www.gutenberg.org/ebooks/bookshelf/375
+374	"DE Prosa"	https://www.gutenberg.org/ebooks/bookshelf/374
+378	"DE Sachbuch"	https://www.gutenberg.org/ebooks/bookshelf/378
+30	"Detective Fiction"	https://www.gutenberg.org/ebooks/bookshelf/30
+222	"Dew Drops"	https://www.gutenberg.org/ebooks/bookshelf/222
+221	"De Aarde en haar Volken"	https://www.gutenberg.org/ebooks/bookshelf/221
+223	"Donahoe's Magazine"	https://www.gutenberg.org/ebooks/bookshelf/223
+31	"Early English Text Society"	https://www.gutenberg.org/ebooks/bookshelf/31
+224	"Ecology"	https://www.gutenberg.org/ebooks/bookshelf/224
+138	"Education"	https://www.gutenberg.org/ebooks/bookshelf/138
+121	"Egypt"	https://www.gutenberg.org/ebooks/bookshelf/121
+32	"Engineering"	https://www.gutenberg.org/ebooks/bookshelf/32
+139	"English Civil War"	https://www.gutenberg.org/ebooks/bookshelf/139
+33	"Erotic Fiction"	https://www.gutenberg.org/ebooks/bookshelf/33
+34	"Esperanto"	https://www.gutenberg.org/ebooks/bookshelf/34
+406	"FR Beaux-Arts"	https://www.gutenberg.org/ebooks/bookshelf/406
+382	"FR Biographie, Mémoires, Journal intime, Correspondance"	https://www.gutenberg.org/ebooks/bookshelf/382
+306	"FR Chansons"	https://www.gutenberg.org/ebooks/bookshelf/306
+408	"FR Chroniques"	https://www.gutenberg.org/ebooks/bookshelf/408
+392	"FR Contes"	https://www.gutenberg.org/ebooks/bookshelf/392
+387	"FR Droit et Justice"	https://www.gutenberg.org/ebooks/bookshelf/387
+380	"FR Education et Enseignement"	https://www.gutenberg.org/ebooks/bookshelf/380
+307	"FR Femmes"	https://www.gutenberg.org/ebooks/bookshelf/307
+390	"FR Guerres"	https://www.gutenberg.org/ebooks/bookshelf/390
+309	"FR Histoire"	https://www.gutenberg.org/ebooks/bookshelf/309
+385	"FR Humour"	https://www.gutenberg.org/ebooks/bookshelf/385
+310	"FR Illustrateurs"	https://www.gutenberg.org/ebooks/bookshelf/310
+311	"FR Jeunesse"	https://www.gutenberg.org/ebooks/bookshelf/311
+384	"FR Langues"	https://www.gutenberg.org/ebooks/bookshelf/384
+407	"FR La Première Guerre Mondiale, 1914-1918"	https://www.gutenberg.org/ebooks/bookshelf/407
+313	"FR Littérature"	https://www.gutenberg.org/ebooks/bookshelf/313
+337	"FR Littérature francophone"	https://www.gutenberg.org/ebooks/bookshelf/337
+416	"FR Livres, Collections et Bibliophilie"	https://www.gutenberg.org/ebooks/bookshelf/416
+315	"FR Musique"	https://www.gutenberg.org/ebooks/bookshelf/315
+417	"FR Métiers et Artisanat"	https://www.gutenberg.org/ebooks/bookshelf/417
+395	"FR Nouveautés"	https://www.gutenberg.org/ebooks/bookshelf/395
+317	"FR Nouvelles"	https://www.gutenberg.org/ebooks/bookshelf/317
+383	"FR Occultisme"	https://www.gutenberg.org/ebooks/bookshelf/383
+318	"FR Peinture"	https://www.gutenberg.org/ebooks/bookshelf/318
+386	"FR Peuples et Sociétés"	https://www.gutenberg.org/ebooks/bookshelf/386
+381	"FR Philosophie, Religion et Morale"	https://www.gutenberg.org/ebooks/bookshelf/381
+388	"FR Politique"	https://www.gutenberg.org/ebooks/bookshelf/388
+35	"FR Poésie"	https://www.gutenberg.org/ebooks/bookshelf/35
+319	"FR Presse"	https://www.gutenberg.org/ebooks/bookshelf/319
+320	"FR Prix Nobel"	https://www.gutenberg.org/ebooks/bookshelf/320
+322	"FR Sciences et Techniques"	https://www.gutenberg.org/ebooks/bookshelf/322
+321	"FR Science fiction"	https://www.gutenberg.org/ebooks/bookshelf/321
+391	"FR Services publics"	https://www.gutenberg.org/ebooks/bookshelf/391
+393	"FR Sports et loisirs"	https://www.gutenberg.org/ebooks/bookshelf/393
+396	"FR Séduction et libertinage"	https://www.gutenberg.org/ebooks/bookshelf/396
+323	"FR Théâtre"	https://www.gutenberg.org/ebooks/bookshelf/323
+394	"FR Villes"	https://www.gutenberg.org/ebooks/bookshelf/394
+397	"FR Voyages et pays"	https://www.gutenberg.org/ebooks/bookshelf/397
+400	"Famous Scots Series"	https://www.gutenberg.org/ebooks/bookshelf/400
+36	"Fantasy"	https://www.gutenberg.org/ebooks/bookshelf/36
+37	"Folklore"	https://www.gutenberg.org/ebooks/bookshelf/37
+145	"Forestry"	https://www.gutenberg.org/ebooks/bookshelf/145
+122	"France"	https://www.gutenberg.org/ebooks/bookshelf/122
+226	"Garden and Forest"	https://www.gutenberg.org/ebooks/bookshelf/226
+411	"General Fiction"	https://www.gutenberg.org/ebooks/bookshelf/411
+227	"Geology"	https://www.gutenberg.org/ebooks/bookshelf/227
+123	"Germany"	https://www.gutenberg.org/ebooks/bookshelf/123
+38	"German Language Books"	https://www.gutenberg.org/ebooks/bookshelf/38
+228	"Godey's Lady's Book"	https://www.gutenberg.org/ebooks/bookshelf/228
+229	"Golden Days for Boys and Girls"	https://www.gutenberg.org/ebooks/bookshelf/229
+39	"Gothic Fiction"	https://www.gutenberg.org/ebooks/bookshelf/39
+230	"Graham's Magazine"	https://www.gutenberg.org/ebooks/bookshelf/230
+124	"Greece"	https://www.gutenberg.org/ebooks/bookshelf/124
+231	"Harper's New Monthly Magazine"	https://www.gutenberg.org/ebooks/bookshelf/231
+232	"Harper's Young People"	https://www.gutenberg.org/ebooks/bookshelf/232
+40	"Harvard Classics"	https://www.gutenberg.org/ebooks/bookshelf/40
+125	"Hinduism"	https://www.gutenberg.org/ebooks/bookshelf/125
+41	"Historical Fiction"	https://www.gutenberg.org/ebooks/bookshelf/41
+42	"Horror"	https://www.gutenberg.org/ebooks/bookshelf/42
+43	"Horticulture"	https://www.gutenberg.org/ebooks/bookshelf/43
+44	"Humor"	https://www.gutenberg.org/ebooks/bookshelf/44
+418	"IT Agraria"	https://www.gutenberg.org/ebooks/bookshelf/418
+410	"IT Archeologia e Storia dell'arte"	https://www.gutenberg.org/ebooks/bookshelf/410
+409	"IT Architettura"	https://www.gutenberg.org/ebooks/bookshelf/409
+342	"IT Arte varia"	https://www.gutenberg.org/ebooks/bookshelf/342
+343	"IT Biografie"	https://www.gutenberg.org/ebooks/bookshelf/343
+344	"IT Botanica"	https://www.gutenberg.org/ebooks/bookshelf/344
+345	"IT Cucina"	https://www.gutenberg.org/ebooks/bookshelf/345
+346	"IT Discorsi e Orazioni"	https://www.gutenberg.org/ebooks/bookshelf/346
+347	"IT Economia"	https://www.gutenberg.org/ebooks/bookshelf/347
+348	"IT Filosofia"	https://www.gutenberg.org/ebooks/bookshelf/348
+349	"IT Folklore"	https://www.gutenberg.org/ebooks/bookshelf/349
+350	"IT Geografia"	https://www.gutenberg.org/ebooks/bookshelf/350
+351	"IT Legge"	https://www.gutenberg.org/ebooks/bookshelf/351
+352	"IT Letteratura"	https://www.gutenberg.org/ebooks/bookshelf/352
+353	"IT Letteratura per ragazzi"	https://www.gutenberg.org/ebooks/bookshelf/353
+354	"IT Linguistica"	https://www.gutenberg.org/ebooks/bookshelf/354
+399	"IT Miscellanea"	https://www.gutenberg.org/ebooks/bookshelf/399
+355	"IT Musica"	https://www.gutenberg.org/ebooks/bookshelf/355
+356	"IT Narrativa varia"	https://www.gutenberg.org/ebooks/bookshelf/356
+357	"IT Numismatica"	https://www.gutenberg.org/ebooks/bookshelf/357
+358	"IT Poesia"	https://www.gutenberg.org/ebooks/bookshelf/358
+359	"IT Psicologia e Sociologia"	https://www.gutenberg.org/ebooks/bookshelf/359
+360	"IT Racconti"	https://www.gutenberg.org/ebooks/bookshelf/360
+361	"IT Religione e Spiritualità"	https://www.gutenberg.org/ebooks/bookshelf/361
+362	"IT Romanzi"	https://www.gutenberg.org/ebooks/bookshelf/362
+363	"IT Romanzi storici"	https://www.gutenberg.org/ebooks/bookshelf/363
+364	"IT Salute"	https://www.gutenberg.org/ebooks/bookshelf/364
+365	"IT Scienza"	https://www.gutenberg.org/ebooks/bookshelf/365
+398	"IT Scienze militari"	https://www.gutenberg.org/ebooks/bookshelf/398
+366	"IT Scienze politiche"	https://www.gutenberg.org/ebooks/bookshelf/366
+367	"IT Storia"	https://www.gutenberg.org/ebooks/bookshelf/367
+368	"IT Teatro dialettale"	https://www.gutenberg.org/ebooks/bookshelf/368
+369	"IT Teatro in prosa"	https://www.gutenberg.org/ebooks/bookshelf/369
+370	"IT Teatro in versi"	https://www.gutenberg.org/ebooks/bookshelf/370
+371	"IT Tecnologia"	https://www.gutenberg.org/ebooks/bookshelf/371
+372	"IT Umorismo"	https://www.gutenberg.org/ebooks/bookshelf/372
+373	"IT Viaggi"	https://www.gutenberg.org/ebooks/bookshelf/373
+327	"Illustrators"	https://www.gutenberg.org/ebooks/bookshelf/327
+45	"India"	https://www.gutenberg.org/ebooks/bookshelf/45
+126	"Islam"	https://www.gutenberg.org/ebooks/bookshelf/126
+127	"Italy"	https://www.gutenberg.org/ebooks/bookshelf/127
+128	"Judaism"	https://www.gutenberg.org/ebooks/bookshelf/128
+234	"Journal of Entomology and Zoology"	https://www.gutenberg.org/ebooks/bookshelf/234
+235	"L'Illustration"	https://www.gutenberg.org/ebooks/bookshelf/235
+46	"Language Education"	https://www.gutenberg.org/ebooks/bookshelf/46
+404	"Latter Day Saints"	https://www.gutenberg.org/ebooks/bookshelf/404
+236	"Lippincott's Magazine"	https://www.gutenberg.org/ebooks/bookshelf/236
+237	"Little Folks"	https://www.gutenberg.org/ebooks/bookshelf/237
+414	"London Medical Gazette"	https://www.gutenberg.org/ebooks/bookshelf/414
+47	"Love"	https://www.gutenberg.org/ebooks/bookshelf/47
+146	"Manufacturing"	https://www.gutenberg.org/ebooks/bookshelf/146
+415	"Maps and Cartography"	https://www.gutenberg.org/ebooks/bookshelf/415
+402	"Masterpieces in Colour"	https://www.gutenberg.org/ebooks/bookshelf/402
+102	"Mathematics"	https://www.gutenberg.org/ebooks/bookshelf/102
+239	"McClure's Magazine"	https://www.gutenberg.org/ebooks/bookshelf/239
+48	"Medicine"	https://www.gutenberg.org/ebooks/bookshelf/48
+401	"Mediæval Town Series"	https://www.gutenberg.org/ebooks/bookshelf/401
+105	"Microbiology"	https://www.gutenberg.org/ebooks/bookshelf/105
+109	"Microscopy"	https://www.gutenberg.org/ebooks/bookshelf/109
+240	"Mother Earth"	https://www.gutenberg.org/ebooks/bookshelf/240
+49	"Movie Books"	https://www.gutenberg.org/ebooks/bookshelf/49
+241	"Mrs Whittelsey's Magazine for Mothers and Daughters"	https://www.gutenberg.org/ebooks/bookshelf/241
+50	"Music"	https://www.gutenberg.org/ebooks/bookshelf/50
+129	"Mycology"	https://www.gutenberg.org/ebooks/bookshelf/129
+51	"Mystery Fiction"	https://www.gutenberg.org/ebooks/bookshelf/51
+52	"Mythology"	https://www.gutenberg.org/ebooks/bookshelf/52
+149	"Napoleonic(Bookshelf)"	https://www.gutenberg.org/ebooks/bookshelf/149
+53	"Native America"	https://www.gutenberg.org/ebooks/bookshelf/53
+54	"Natural History"	https://www.gutenberg.org/ebooks/bookshelf/54
+130	"New Zealand"	https://www.gutenberg.org/ebooks/bookshelf/130
+244	"Northern Nut Growers Association"	https://www.gutenberg.org/ebooks/bookshelf/244
+131	"Norway"	https://www.gutenberg.org/ebooks/bookshelf/131
+245	"Notes and Queries"	https://www.gutenberg.org/ebooks/bookshelf/245
+246	"Noteworthy Trials(Bookshelf)"	https://www.gutenberg.org/ebooks/bookshelf/246
+55	"One Act Plays"	https://www.gutenberg.org/ebooks/bookshelf/55
+56	"Opera"	https://www.gutenberg.org/ebooks/bookshelf/56
+247	"Our Young Folks"	https://www.gutenberg.org/ebooks/bookshelf/247
+88	"PT Arte"	https://www.gutenberg.org/ebooks/bookshelf/88
+89	"PT Biografia"	https://www.gutenberg.org/ebooks/bookshelf/89
+90	"PT Ciência e Técnica"	https://www.gutenberg.org/ebooks/bookshelf/90
+91	"PT Contos"	https://www.gutenberg.org/ebooks/bookshelf/91
+92	"PT História"	https://www.gutenberg.org/ebooks/bookshelf/92
+93	"PT Infantil e Juvenil"	https://www.gutenberg.org/ebooks/bookshelf/93
+94	"PT Língua Portuguesa"	https://www.gutenberg.org/ebooks/bookshelf/94
+95	"PT Navegações e Explorações"	https://www.gutenberg.org/ebooks/bookshelf/95
+96	"PT Periódicos"	https://www.gutenberg.org/ebooks/bookshelf/96
+97	"PT Poesia"	https://www.gutenberg.org/ebooks/bookshelf/97
+98	"PT Política e Sociedade"	https://www.gutenberg.org/ebooks/bookshelf/98
+99	"PT Romance"	https://www.gutenberg.org/ebooks/bookshelf/99
+100	"PT Teatro"	https://www.gutenberg.org/ebooks/bookshelf/100
+132	"Paganism"	https://www.gutenberg.org/ebooks/bookshelf/132
+57	"Philosophy"	https://www.gutenberg.org/ebooks/bookshelf/57
+158	"Photography"	https://www.gutenberg.org/ebooks/bookshelf/158
+103	"Physics"	https://www.gutenberg.org/ebooks/bookshelf/103
+110	"Physiology"	https://www.gutenberg.org/ebooks/bookshelf/110
+58	"Pirates, Buccaneers, Corsairs, etc."	https://www.gutenberg.org/ebooks/bookshelf/58
+59	"Plays"	https://www.gutenberg.org/ebooks/bookshelf/59
+248	"Poetry, A Magazine of Verse"	https://www.gutenberg.org/ebooks/bookshelf/248
+60	"Poetry"	https://www.gutenberg.org/ebooks/bookshelf/60
+61	"Politics"	https://www.gutenberg.org/ebooks/bookshelf/61
+249	"Popular Science Monthly"	https://www.gutenberg.org/ebooks/bookshelf/249
+250	"Prairie Farmer"	https://www.gutenberg.org/ebooks/bookshelf/250
+62	"Precursors of Science Fiction"	https://www.gutenberg.org/ebooks/bookshelf/62
+63	"Project Gutenberg"	https://www.gutenberg.org/ebooks/bookshelf/63
+64	"Psychology"	https://www.gutenberg.org/ebooks/bookshelf/64
+252	"Punch"	https://www.gutenberg.org/ebooks/bookshelf/252
+253	"Punchinello"	https://www.gutenberg.org/ebooks/bookshelf/253
+65	"Racism"	https://www.gutenberg.org/ebooks/bookshelf/65
+66	"Reference"	https://www.gutenberg.org/ebooks/bookshelf/66
+412	"Romantic Fiction"	https://www.gutenberg.org/ebooks/bookshelf/412
+67	"School Stories"	https://www.gutenberg.org/ebooks/bookshelf/67
+106	"Science"	https://www.gutenberg.org/ebooks/bookshelf/106
+68	"Science Fiction"	https://www.gutenberg.org/ebooks/bookshelf/68
+403	"Science Fiction by Women"	https://www.gutenberg.org/ebooks/bookshelf/403
+256	"Scientific American"	https://www.gutenberg.org/ebooks/bookshelf/256
+144	"Scouts"	https://www.gutenberg.org/ebooks/bookshelf/144
+257	"Scribner's Magazine"	https://www.gutenberg.org/ebooks/bookshelf/257
+69	"Short Stories"	https://www.gutenberg.org/ebooks/bookshelf/69
+70	"Slavery"	https://www.gutenberg.org/ebooks/bookshelf/70
+134	"Sociology"	https://www.gutenberg.org/ebooks/bookshelf/134
+135	"South Africa"	https://www.gutenberg.org/ebooks/bookshelf/135
+71	"South America"	https://www.gutenberg.org/ebooks/bookshelf/71
+140	"Spanish American War"	https://www.gutenberg.org/ebooks/bookshelf/140
+258	"St. Nicholas Magazine for Boys and Girls"	https://www.gutenberg.org/ebooks/bookshelf/258
+72	"Suffrage"	https://www.gutenberg.org/ebooks/bookshelf/72
+143	"Technology"	https://www.gutenberg.org/ebooks/bookshelf/143
+259	"The Aldine"	https://www.gutenberg.org/ebooks/bookshelf/259
+260	"The American Architect and Building News"	https://www.gutenberg.org/ebooks/bookshelf/260
+423	"The American Bee Journal"	https://www.gutenberg.org/ebooks/bookshelf/423
+261	"The American Journal of Archaeology"	https://www.gutenberg.org/ebooks/bookshelf/261
+262	"The American Missionary"	https://www.gutenberg.org/ebooks/bookshelf/262
+263	"The American Quarterly Review"	https://www.gutenberg.org/ebooks/bookshelf/263
+264	"The Arena"	https://www.gutenberg.org/ebooks/bookshelf/264
+265	"The Argosy"	https://www.gutenberg.org/ebooks/bookshelf/265
+266	"The Atlantic Monthly"	https://www.gutenberg.org/ebooks/bookshelf/266
+267	"The Baptist Magazine"	https://www.gutenberg.org/ebooks/bookshelf/267
+268	"The Bay State Monthly"	https://www.gutenberg.org/ebooks/bookshelf/268
+269	"The Botanical Magazine"	https://www.gutenberg.org/ebooks/bookshelf/269
+270	"The Brochure Series of Architectural Illustration"	https://www.gutenberg.org/ebooks/bookshelf/270
+271	"The Catholic World"	https://www.gutenberg.org/ebooks/bookshelf/271
+272	"The Christian Foundation"	https://www.gutenberg.org/ebooks/bookshelf/272
+273	"The Church of England Magazine"	https://www.gutenberg.org/ebooks/bookshelf/273
+274	"The Contemporary Review"	https://www.gutenberg.org/ebooks/bookshelf/274
+275	"The Economist"	https://www.gutenberg.org/ebooks/bookshelf/275
+276	"The Esperantist"	https://www.gutenberg.org/ebooks/bookshelf/276
+277	"The Galaxy"	https://www.gutenberg.org/ebooks/bookshelf/277
+278	"The Girls Own Paper"	https://www.gutenberg.org/ebooks/bookshelf/278
+279	"The Great Round World And What Is Going On In It"	https://www.gutenberg.org/ebooks/bookshelf/279
+413	"The Haslemere Museum Gazette"	https://www.gutenberg.org/ebooks/bookshelf/413
+280	"The Idler"	https://www.gutenberg.org/ebooks/bookshelf/280
+281	"The Illustrated War News"	https://www.gutenberg.org/ebooks/bookshelf/281
+282	"The International Magazine of Literature, Art, and Science"	https://www.gutenberg.org/ebooks/bookshelf/282
+283	"The Irish Ecclesiastical Record"	https://www.gutenberg.org/ebooks/bookshelf/283
+284	"The Irish Penny Journal"	https://www.gutenberg.org/ebooks/bookshelf/284
+285	"The Journal of Negro History"	https://www.gutenberg.org/ebooks/bookshelf/285
+286	"The Knickerbocker"	https://www.gutenberg.org/ebooks/bookshelf/286
+287	"The Mayflower"	https://www.gutenberg.org/ebooks/bookshelf/287
+288	"The Menorah Journal"	https://www.gutenberg.org/ebooks/bookshelf/288
+289	"The Mentor"	https://www.gutenberg.org/ebooks/bookshelf/289
+290	"The Mirror of Literature, Amusement, and Instruction"	https://www.gutenberg.org/ebooks/bookshelf/290
+291	"The Mirror of Taste, and Dramatic Censor"	https://www.gutenberg.org/ebooks/bookshelf/291
+292	"The National Preacher"	https://www.gutenberg.org/ebooks/bookshelf/292
+293	"The North American Medical and Surgical Journal"	https://www.gutenberg.org/ebooks/bookshelf/293
+294	"The Nursery"	https://www.gutenberg.org/ebooks/bookshelf/294
+73	"The Philatelic Digital Library Project"	https://www.gutenberg.org/ebooks/bookshelf/73
+295	"The Scrap Book"	https://www.gutenberg.org/ebooks/bookshelf/295
+296	"The Speaker"	https://www.gutenberg.org/ebooks/bookshelf/296
+297	"The Stars and Stripes"	https://www.gutenberg.org/ebooks/bookshelf/297
+298	"The Strand Magazine"	https://www.gutenberg.org/ebooks/bookshelf/298
+299	"The Unpopular Review"	https://www.gutenberg.org/ebooks/bookshelf/299
+300	"The Writer"	https://www.gutenberg.org/ebooks/bookshelf/300
+301	"The Yellow Book"	https://www.gutenberg.org/ebooks/bookshelf/301
+74	"Transportation"	https://www.gutenberg.org/ebooks/bookshelf/74
+75	"Travel"	https://www.gutenberg.org/ebooks/bookshelf/75
+141	"US Civil War"	https://www.gutenberg.org/ebooks/bookshelf/141
+76	"United Kingdom"	https://www.gutenberg.org/ebooks/bookshelf/76
+136	"United States"	https://www.gutenberg.org/ebooks/bookshelf/136
+302	"United States Law"	https://www.gutenberg.org/ebooks/bookshelf/302
+77	"Western"	https://www.gutenberg.org/ebooks/bookshelf/77
+78	"Witchcraft"	https://www.gutenberg.org/ebooks/bookshelf/78
+80	"Women's Travel Journals"	https://www.gutenberg.org/ebooks/bookshelf/80
+147	"Woodwork"	https://www.gutenberg.org/ebooks/bookshelf/147
+142	"World War I"	https://www.gutenberg.org/ebooks/bookshelf/142
+325	"World War II"	https://www.gutenberg.org/ebooks/bookshelf/325
+303	"Zoology"	https://www.gutenberg.org/ebooks/bookshelf/303
