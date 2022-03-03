@@ -1,4 +1,4 @@
-#! /Users/luis/anaconda3/envs/nlu/bin/python
+#! PATH/TO/ENVIRONMENT/BIN
 
 import os
 import re
