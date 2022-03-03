@@ -45,7 +45,7 @@ class WordRelate:
         '''
         This function parses each input line:
         - sets every word into lowercase
-        - remove non words
+        - remove non words (except single white space)
         - remove empty lines
         - returns a list of words.
         :param line: the line to process
