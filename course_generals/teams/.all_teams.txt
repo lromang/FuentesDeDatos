@@ -1,5 +1,5 @@
-EquipoA,9
+EquipoA,10
 EquipoB,3
 EquipoC,4
-EquipoSobreescrito,8
+EquipoSobreescrito,9
 RegistroEquipo,3
