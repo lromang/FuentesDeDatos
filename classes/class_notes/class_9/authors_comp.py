@@ -20,7 +20,7 @@ class author:
         NOTE DESIGN CHOICES: In most functions we use a paragraph
         # transformation. I.e. we considere all the information at paragraph level.
         # wouldn't it be better to performe this operation only once and store the values.
-        # Use your bash and python webscrapping techniques to create a book directory with
+        # Use your bash and python webscrapping techniques to create a book dictionary with
         # the following structure:
         # {book_id: [paragraph1, paragraph2, ...., paragraphn], book_id_2: [paragraph1, ..]..}
         # Make sure to intialize self.books as a dict.
