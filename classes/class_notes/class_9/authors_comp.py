@@ -27,8 +27,9 @@ class author:
         # It would also be handy to have a dictionary with the structure
         # {book_id1: title1, book_id2: title2, ...}
         # for future references on the titles of each book. (the title should also be provided
-        # by your webscrapping routine. 
-        # Make sure to intialize self.books as a dict.
+        # by your webscrapping routine).
+        # - Make sure to intialize self.books as a dict.
+        # - Makle sure to initialize self.book_names as a dict. 
         '''
 
         print(':Init Author:')
