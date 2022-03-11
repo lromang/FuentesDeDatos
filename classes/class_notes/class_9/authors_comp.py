@@ -25,7 +25,7 @@ class author:
         # {book_id: [paragraph1, paragraph2, ...., paragraphn], book_id_2: [paragraph1, ..]..}
         # Make sure to intialize self.books as a dict.
         '''
-        
+
         print(':Init Author:')
         self.home_dir = home_dir
         self.author_id = author_id
@@ -88,6 +88,13 @@ class author:
         # Store values in object
         self.books_urls = [f'{self.text_url}/{book_id}/{book_id}' for book_id in book_ids[:n_books]]
         return self.books_urls
+
+    def make_feature_dict(self):
+        '''
+        create the object's feature dictionary
+        {feature1: [feature1_book1, feature1_book2, ..], feature2: [feature2_book1, feature2_book2]}
+        :return:
+        '''
 
     @staticmethod
     def mean_paragraph_length(book):
