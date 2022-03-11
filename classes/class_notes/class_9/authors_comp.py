@@ -2,6 +2,8 @@ import re
 import urllib
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
+import string
+
 
 class author:
 
@@ -10,28 +12,30 @@ class author:
     text scrapping, processing and feature extraction.
     """
 
-    def __init__(self, home_dir, author_id=None):
+    def __init__(self, home_dir, author_id=None, stopwords=None):
         '''
         :param home_dir: root folder for current proyect
         :param author_id: the id of the author to extract
         NOTE: Add a books list to store the extracted contents.
+        NOTE DESIGN CHOICES: In most functions we use a paragraph
+        # transformation. I.e. we considere all the information at paragraph level.
+        # wouldn't it be better to performe this operation only once and store the values.
+        # Use your bash and python webscrapping techniques to create a book directory with
+        # the following structure:
+        # {book_id: [paragraph1, paragraph2, ...., paragraphn], book_id_2: [paragraph1, ..]..}
+        # Make sure to intialize self.books as a dict.
         '''
-
+        
+        print(':Init Author:')
         self.home_dir = home_dir
         self.author_id = author_id
         self.root_url = 'https://www.gutenberg.org'
         self.text_url = f'{self.root_url}/files'
         self.author_url = f'{self.root_url}/ebooks/author/{self.author_id}'
+        self.stopwords = stopwords
         self.books_urls = []
         self.books = []
-
-
-    def get_book(self, book_url):
-        '''
-        This function returns the parsed contents of the specified book_url
-        :param book_url: the url of the book to download
-        :return: the book contents without special characters
-        '''
+        self.features = {}
 
     def get_books(self, n_books=10):
         '''
@@ -64,13 +68,13 @@ class author:
 
         print(f'{len(self.books)} books ingested. ')
 
-
     def get_books_urls(self, n_books=10):
         '''
 
         :param n_books: number of books to download. (tops at the resource limit)
         :return: al list with all the contents of all the books for this author
         '''
+
         url_connect = urlopen(f'{self.author_url}')
         url_content = BeautifulSoup(url_connect.read(), 'html.parser')
         # Split this code, try to understand what each part is doing.
@@ -85,30 +89,53 @@ class author:
         self.books_urls = [f'{self.text_url}/{book_id}/{book_id}' for book_id in book_ids[:n_books]]
         return self.books_urls
 
-    def mean_paragraph_length(self):
+    @staticmethod
+    def mean_paragraph_length(book):
+        '''
+        Task: Try this function with this input:
+        book = 'this.is.a.paragraph.\n\n'*2 +  'this.is.another.paragraph.'*2 + 'endofbook.'
+        make sure you understand what it is doing
+        :return: The average number of words per paragraph. '\n\n'
         '''
 
-        :return: The average number of words per paragraph.
+        paragraphs = book.split('\n\n')
+        return sum([len(re.findall(r'\w+', paragraph)) for paragraph in paragraphs])/len(paragraphs)
+
+    @staticmethod
+    def mean_punctuation(book):
+        '''
+        Task: Try this function with this input:
+        book = 'this.is.a.paragraph.\n\n'*2 +  'this.is.another.paragraph.'*2 + 'endofbook.'
+        make sure you understand what it is doing
+        :return: The average number of punctuation characters per paragraph. 'string.punctuation'
         '''
 
-    def mean_punctuation(self):
-        '''
+        punct = string.punctuation
+        paragraphs = book.split('\n\n')
+        return sum([len(re.findall(rf'[{punct}]', paragraph)) for paragraph in paragraphs])/len(paragraphs)
 
-        :return: The average nummber of punctuation characters per paragraph.
-        '''
-
+    @staticmethod
     def mean_sentence_length(self):
         '''
 
-        :return: The average number of words per sentence.
+        :return: The average number of words per sentence. split('.')
         '''
 
-    def mean_unique(self):
+    @staticmethod
+    def mean_unique(book, stopwords):
         '''
-
+        This one is somewhat tricky, make sure you understand what each
+        component is doing. USE THIS EXAMPLE
+        book = 'this.is.a.paragraph.\n\n'*2 +  'this.is.another.paragraph.'*2 + 'endofbook.'
         :return: The average number of unique non-stop words per sentence.
         '''
 
+        paragraphs = book.split('\n\n')
+        return sum([len(set(y) - set(stopwords))
+                    for y in [[line for line in re.sub(r'.$', '', paragraph).split('.')]
+                              for paragraph in paragraphs]])/len(paragraphs)
+
+    @staticmethod
     def mean_stop(self):
         '''
 

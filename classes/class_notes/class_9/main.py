@@ -17,9 +17,15 @@ if __name__ == '__main__':
     home_dir = args.home_dir
     author_id = args.author_id
 
+    # Read stopwords
+    with open('./stopwords.txt') as F:
+        stopwords = F.read().split('\n')
+
     # Instantiate author
-    auth_1 = author(home_dir=home_dir, author_id=author_id)
-    print(auth_1.get_books_urls(n_books=10))
+    auth_1 = author(home_dir=home_dir,
+                    author_id=author_id,
+                    stopwords=stopwords)
     auth_1.get_books()
+
 
 
