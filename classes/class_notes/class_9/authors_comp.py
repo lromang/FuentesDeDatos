@@ -20,9 +20,14 @@ class author:
         NOTE DESIGN CHOICES: In most functions we use a paragraph
         # transformation. I.e. we considere all the information at paragraph level.
         # wouldn't it be better to performe this operation only once and store the values.
-        # Use your bash and python webscrapping techniques to create a book dictionary with
+        # Use your bash and python webscrapping techniques to get the book's
+        # ids and create a book dictionary with
         # the following structure:
         # {book_id: [paragraph1, paragraph2, ...., paragraphn], book_id_2: [paragraph1, ..]..}
+        # It would also be handy to have a dictionary with the structure
+        # {book_id1: title1, book_id2: title2, ...}
+        # for future references on the titles of each book. (the title should also be provided
+        # by your webscrapping routine. 
         # Make sure to intialize self.books as a dict.
         '''
 
