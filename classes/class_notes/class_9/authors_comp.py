@@ -29,7 +29,7 @@ class author:
         # for future references on the titles of each book. (the title should also be provided
         # by your webscrapping routine).
         # - Make sure to intialize self.books as a dict.
-        # - Makle sure to initialize self.book_names as a dict. 
+        # - Makle sure to initialize self.book_names as a dict.
         '''
 
         print(':Init Author:')
@@ -49,6 +49,9 @@ class author:
         :return: al list with all the contents of all the books for this author
         Note the try-catch statement and the proper way to catch an urllib exception.
         '''
+        # First get books_urls
+        if not self.books_urls:
+            self.get_books_urls(n_books)
 
         for book_url in self.books_urls:
             clean_book_url = '{book_url}{extra_zero}.txt'
@@ -58,7 +61,6 @@ class author:
                 print(f'Trying book_format: {book_format}')
                 book_connect = urlopen(book_format)
                 book_content = BeautifulSoup(book_connect.read(), 'html.parser')
-                self.books.append(book_content.get_text())
             # Proper way to handle an HTTP exception
             except urllib.error.HTTPError as exception:
                 book_format = clean_book_url.format(book_url=book_url,
@@ -66,11 +68,15 @@ class author:
                 print(f'Trying book_format: {book_format}')
                 book_connect = urlopen(book_format)
                 book_content = BeautifulSoup(book_connect.read(), 'html.parser')
-                self.books.append(book_content.get_text())
             # Do the following only if you know what you are doing. Remember that
             # keyboard interruption is an exception.
             except:
+                book_content = None
                 pass
+            # Add content
+            if book_content:
+                # Remove special characters!
+                self.books.append(re.sub('\r', '', book_content.get_text()))
 
         print(f'{len(self.books)} books ingested. ')
 
@@ -99,8 +105,13 @@ class author:
         '''
         create the object's feature dictionary
         {feature1: [feature1_book1, feature1_book2, ..], feature2: [feature2_book1, feature2_book2]}
-        :return:
+        NOTE: this method is highly inefficient
         '''
+        self.features = {'mean_paragraph_length': [self.mean_paragraph_length(book) for book in self.books],
+                         'mean_sentence_length': [self.mean_sentence_length(book) for book in self.books],
+                         'mean_punctuation': [self.mean_punctuation(book) for book in self.books],
+                         'mean_unique': [self.mean_unique(book, stopwords=self.stopwords) for book in self.books],
+                         'mean_stop': [self.mean_stop(book, stopwords=self.stopwords) for book in self.books]}
 
     @staticmethod
     def mean_paragraph_length(book):
@@ -128,11 +139,13 @@ class author:
         return sum([len(re.findall(rf'[{punct}]', paragraph)) for paragraph in paragraphs])/len(paragraphs)
 
     @staticmethod
-    def mean_sentence_length(self):
+    def mean_sentence_length(book):
         '''
 
         :return: The average number of words per sentence. split('.')
         '''
+        sentences = [x for x in book.split('.') if x]
+        return sum([len(re.findall(r'\w+', sentence)) for sentence in sentences])/len(sentences)
 
     @staticmethod
     def mean_unique(book, stopwords):
@@ -149,8 +162,10 @@ class author:
                               for paragraph in paragraphs]])/len(paragraphs)
 
     @staticmethod
-    def mean_stop(self):
+    def mean_stop(book, stopwords):
         '''
 
         :return: The average number of stopwords per sentence.
         '''
+        sentences = [x for x in book.split('.') if x]
+        return sum([len([word for word in sentence if word in stopwords]) for sentence in sentences])/len(sentences)
