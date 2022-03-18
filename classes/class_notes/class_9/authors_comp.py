@@ -50,7 +50,7 @@ class author:
         Note the try-catch statement and the proper way to catch an urllib exception.
         '''
         # First get books_urls
-        if not self.books_urls:
+        if len(self.books_urls) == 0:
             self.get_books_urls(n_books)
 
         for book_url in self.books_urls:
@@ -95,7 +95,7 @@ class author:
         # for t in url_content.find_all('li', {'class':'booklink'})]]
         book_ids = [re.search(r'([^/]+)$', x).group(0)
                     for x in [t.get('href') for t
-                              in url_content.find_all('a', {'class': 'link'})] if
+                              in url_content.find_all('a', {'class': 'link'})] if x and
                     re.match(r'.*[0-9]+$', x)]
         # Store values in object
         self.books_urls = [f'{self.text_url}/{book_id}/{book_id}' for book_id in book_ids[:n_books]]

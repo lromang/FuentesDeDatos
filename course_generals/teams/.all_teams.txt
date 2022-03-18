@@ -1,5 +1,5 @@
-EquipoA,14
-EquipoB,4
-EquipoC,5
-EquipoSobreescrito,10
-RegistroEquipo,6
+EquipoA,17
+EquipoB,9
+EquipoC,7
+EquipoSobreescrito,11
+RegistroEquipo,13
