@@ -22,4 +22,6 @@ if __name__ == '__main__':
     # Make a forward pass through the logit transformation.
     pred_1 = logit(X, y)
     print(f'Forward pass: {pred_1.forward()}')
+    # Viz preds
+
 

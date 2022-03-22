@@ -1,4 +1,6 @@
 import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 class logit:
 
@@ -19,12 +21,17 @@ class logit:
     """
 
 
-    def __init__(self, X, y):
-        self.X = np.vstack((np.ones(y.shape), X.T))
+    def __init__(self, X, y, alpha=.005):
+        # Notice the order of the operations
+        # first we normalize, then we transpose
+        # and finally append ones.
+        self.X = np.vstack((np.ones(y.shape), self.normalize(X).T))
         self.y = y.reshape(1, -1)
         self.thetas = np.random.rand(self.X.shape[0]).reshape(1, -1)
+        self.alpha = alpha
+        self.train = []
 
-    def forward(self):
+    def forward(self, X):
         '''
         Apply phi
         HINT 1: np.dot
@@ -32,5 +39,56 @@ class logit:
         HINT 3: check the shape of theta!
         :return: phi(z)
         '''
-        return 1/(1 + np.exp(np.dot(self.thetas, self.X)))
+        return 1/(1 + np.exp(-1*np.dot(self.thetas, X)))
+
+    def loss(self):
+        '''
+
+        :return:
+        '''
+        y_hat = self.forward(self.X)
+
+
+    def grads(self):
+        '''
+        dL/dbeta_j = (-1/n sum_i_n (yi-y_h_i)*xij)
+        :return:
+        '''
+        y_hat = self.forward(self.X)
+
+    def optimize(self, err=.01, Tol=1e5, savefig='error.png'):
+        '''
+
+        :return:
+        '''
+        iter = 0
+        loss = self.loss()
+        print('Training')
+        while loss > err and iter < Tol:
+            print(f'loss: {loss}')
+            iter += 1
+        print('Saving results')
+        # Plotting
+        fig, ax = plt.subplots(figsize=(10, 10))
+        sns.lineplot(range(iter), self.train, ax=ax)
+        fig.savefig(savefig)
+
+
+
+    @staticmethod
+    def normalize(X):
+        '''
+
+        :return:
+        '''
+       
+
+
+
+
+
+
+
+
+
 
