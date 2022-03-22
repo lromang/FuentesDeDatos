@@ -1,0 +1,3 @@
+worda, wordb, wordc, wordd
+wordb, worda, wordc, wordd
+worda, worde, wordc, wordb
