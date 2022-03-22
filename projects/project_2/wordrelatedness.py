@@ -241,15 +241,15 @@ class WordRelate:
                 with open(file_path, encoding="utf-8") as f:
                     # Read lines and process them. (notice we are removing empty lines)
                     lines = f.readlines()
-        # -----------------------------------
-        # TODO
-        # - Call proc line on each line of input
-        # - Make sure to add 'START' and 'END' tokens to the start and end of each sentence.
-        # - Preserve only non empty lines.
-        # (15 points)
-        # -----------------------------------
+            # -----------------------------------
+            # TODO
+            # - Call proc line on each line of input
+            # - Make sure to add 'START' and 'END' tokens to the start and end of each sentence.
+            # - Preserve only non empty lines.
+            # (15 points)
+            # -----------------------------------
 
-        # Your code goes here (~ 1 - 3 lines)
+            # Your code goes here (~ 1 - 3 lines)
 
         # Add texts to the collections.
         self.collections[collection_id] = texts
