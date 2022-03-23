@@ -11,7 +11,7 @@ if __name__ == '__main__':
     size = args.size
     # Generate random population.
     print(f'Generating population of size: {size}')
-    pop = gen_pop()
+    pop = gen_pop(size)
     # Get values from population.
     X = pop.values[:, 1:]
     y = pop.values[:, 0]
