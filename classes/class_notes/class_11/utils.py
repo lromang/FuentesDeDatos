@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
+
 def gen_pop(size=100, seed=123454321):
 
     '''

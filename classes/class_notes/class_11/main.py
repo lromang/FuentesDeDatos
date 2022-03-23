@@ -1,6 +1,6 @@
 import argparse
 from utils import *
-from Predictor import logit
+from Predictor import Logit
 
 if __name__ == '__main__':
     # Read size.
@@ -16,7 +16,7 @@ if __name__ == '__main__':
     X = pop.values[:, 1:]
     y = pop.values[:, 0]
     # Instantiate logit predictor.
-    pred_1 = logit(X, y)
+    pred_1 = Logit(X, y)
     # Optmize parameters
     pred_1.optimize()
     # Generate classification region plot.

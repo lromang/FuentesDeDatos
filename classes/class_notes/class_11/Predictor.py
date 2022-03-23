@@ -3,7 +3,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-class logit:
+
+class Logit:
 
     """
     This class implements the logit classifier:
@@ -20,7 +21,6 @@ class logit:
     where
     z_i = sum_j_n alpha_j*x_ji
     """
-
 
     def __init__(self, X, y, alpha=.005):
         # Notice the order of the operations
@@ -50,7 +50,6 @@ class logit:
         y_hat = self.forward(self.X)
         return -1*np.mean(self.y*np.log(y_hat) + (1-self.y)*np.log(1-y_hat))
 
-
     def grads(self):
         '''
         dL/dbeta_j = (-1/n sum_i_n (yi-y_h_i)*xij)
@@ -79,7 +78,6 @@ class logit:
         fig, ax = plt.subplots(figsize=(10, 10))
         sns.lineplot(range(iter), self.train, ax=ax)
         fig.savefig(savefig)
-
 
     def plot_region(self, X):
         '''
@@ -113,9 +111,6 @@ class logit:
                         ax=ax)
         print('Saving classification region plot')
         fig.savefig('class_region.png')
-
-
-
 
     @staticmethod
     def normalize(X):
