@@ -1,7 +1,3 @@
-import numpy as np
-import seaborn as sns
-import pandas as pd
-import matplotlib.pyplot as plt
 import argparse
 from utils import *
 from Predictor import logit
@@ -19,9 +15,11 @@ if __name__ == '__main__':
     # Get values from population.
     X = pop.values[:, 1:]
     y = pop.values[:, 0]
-    # Make a forward pass through the logit transformation.
+    # Instantiate logit predictor.
     pred_1 = logit(X, y)
-    print(f'Forward pass: {pred_1.forward()}')
-    # Viz preds
+    # Optmize parameters
+    pred_1.optimize()
+    # Generate classification region plot.
+    pred_1.plot_region(X)
 
 
