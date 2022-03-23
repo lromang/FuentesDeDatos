@@ -1,0 +1,8 @@
+fitz_urls  = ["http://www.gutenberg.org/cache/epub/9830/pg9830.txt",
+                  "http://www.gutenberg.org/cache/epub/4368/pg4368.txt",
+                  "http://www.gutenberg.org/cache/epub/6695/pg6695.txt"]
+
+poe_urls   = ["http://www.gutenberg.org/cache/epub/1064/pg1064.txt",
+                  "http://www.gutenberg.org/cache/epub/12732/pg12732.txt",
+                  "https://www.gutenberg.org/files/2151/2151-0.txt"]
+
