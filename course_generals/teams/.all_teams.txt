@@ -1,4 +1,4 @@
-EquipoA,17
+EquipoA,18
 EquipoB,9
 EquipoC,7
 EquipoSobreescrito,12
