@@ -43,11 +43,11 @@ class WordRelate:
         # -----------------------------------
 
         # Your code goes here (~ 1 - 5 lines)
-        self.voc = dict()
-        self.ivoc = dict()
-        self.collections = dict()
-        self.vrm = dict()
-        self.vrm = dict()
+        self.voc = {}
+        self.ivoc = {}
+        self.collections = {}
+        self.vrm = {}
+        self.vrm = {}
 
         print(f"Files found in storage: \n {os.listdir(self.data_path)}")
 
