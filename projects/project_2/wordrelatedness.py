@@ -64,7 +64,6 @@ class WordRelate:
     def get_voc(self, collection_id, sw, top_freq_words=2000):
         '''
         Get a series with the most common words in the collection.
-
         :param collection_id: the id of the collection to process
         :param sw: list of stop words
         :param freq_words: maximum number of words to include in output
@@ -203,7 +202,6 @@ class WordRelate:
 
     def get_word_relatedness(self, collection):
         '''
-
         :param word_relate_path:
         :return:
         '''

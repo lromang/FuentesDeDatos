@@ -1,11 +1,13 @@
-#! PATH/TO/ENVIRONMENT/BIN PYTHON
-
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Mar 31 18:48:42 2022
+@author: lroman ft. Francisco Cordero
+"""
 import os
 import re
 import gzip
-#import magic
+import magic
 import numpy as np
-
 import pandas as pd
 from argparse import ArgumentParser
 import matplotlib.pyplot as plt
@@ -18,6 +20,7 @@ class WordRelate:
     This class implements all the necessary functionality
     to perform similarity analysis between words using distributed representations.
     """
+
     def __init__(self, home_dir='.'):
         self.home_dir = home_dir
         self.data_path = os.path.join(self.home_dir, 'data', 'text_comp', 'texts')
@@ -35,18 +38,45 @@ class WordRelate:
         # - reduced_vrm
         # (5 points)
         # -----------------------------------
-        self.voc={}
-        self.ivoc={}
-        self.collections={}
-        self.vrm={}
-        self.vrmlog={}
-        self.reduced_vrm={} 
+
+        # Your code goes here (~ 1 - 5 lines)
+        self.voc, self.ivoc, self.collections, self.vrm, self.reduced_vrm = {}, {}, {}, {}, {}
         print(f"Files found in storage: \n {os.listdir(self.data_path)}")
-    
+
+
     def proc_line(self, line):
-    	parsed_lines = [x for x in re.sub(r'[^a-zA-Z\s]', '',line).lower().split()] 
-    	return parsed_lines
-        
+        '''
+        This function parses each input line:
+        + sets every word into lowercase
+        + remove non words (except single white space)
+        - remove empty lines
+        + returns a list of words.
+        :param line: the line to process
+        :return: processed line
+        '''
+        # -----------------------------------
+        # TODO
+        # complete the parsers, currently, each word
+        # line is outputed as it is.
+        # (10 points)
+        # -----------------------------------
+        # Your code goes here (~ 1 line)
+        # Tried to use regex and split to remove empty lines and split words
+        '''
+        regex = re.compile('[^a-zA-Z]')
+        # line = re.sub(' +', ' ',line)
+        # not necesary, since .split() removes empty lines
+        triple_dot_eliminate = re.sub('\.\.\.+','',line) 
+        dot_replace = re.sub('\.',' END START ',triple_dot_eliminate) 
+        splited = dot_replace.split()
+        parsed_lines_beta = [regex.sub('',x) for x in splited]
+        parsed_lines = [x.lower() for x in parsed_lines_beta]  
+        for y in range(parsed_lines.count('')):parsed_lines.remove('') 
+        return parsed_lines
+        '''
+        return [y for y in [re.sub(r'[^A-Za-z ]+', '', x.lower()) for x in line.split() if x] if len(y) > 0]
+
+
     def get_voc(self, collection_id, sw, top_freq_words=2000):
         '''
         Get a series with the most common words in the collection.
@@ -65,19 +95,35 @@ class WordRelate:
         # Sort the index of ivoc based on the numerical value.
         # (10 points)
         # -----------------------------------
+
         # Your code goes here (~ 2 lines)
+        # Tried to remove sw in this part before indexing to voc and ivoc as Series
+        '''
+        for stopword in sw:
+            while list(self.collections[collection_id]).count(stopword)>0:
+                self.collections[collection_id].remove(stopword)
+        counter = cl.Counter(self.collections[collection_id])
+        most_common = counter.most_common(top_freq_words)
+        tfw1 = []
+        [tfw1.append(most_common[x][0]) for x in range(len(most_common))]
+        seriestfw1 = pd.Series(tfw1)
+        self.ivoc[collection_id] =  seriestfw1.sort_index()
+        self.voc[collection_id] = pd.Series(self.ivoc[collection_id].index, index = (self.ivoc[collection_id].values))
+        '''
         
-        
-        text=self.read_collection(collection_id)
-        words=[word for word in text if word not in sw]
-        a=pd.value_counts(words).index
+        voc = pd.Series([word for text in self.collections[collection_id] for word in text if word not in sw]).value_counts()
+        voc = voc[:top_freq_words]
+        # Obtener palabras con mas frecuencia
         # Make order monotonic to improve performance.
-        self.voc=dict(zip(a,[x for x in range(len(a))]))
+        self.voc[collection_id] = pd.Series(range(len(voc)), index=voc.index).sort_index()
         # Get inverse index for word vocs
-        self.ivoc=dict((v,k)for k,v in self.voc.items())
-        #print(f'Monotonic index:{self.voc[collection_id].index.is_monotonic}')
+        self.ivoc[collection_id] = pd.Series(self.voc[collection_id].index,
+                                             index=self.voc[collection_id].values).sort_index()
         
-    def dist_rep(self, collection_id,sw, ws=4):
+        print(f'Monotonic index:{self.voc[collection_id].index.is_monotonic}')
+
+
+    def dist_rep(self, collection_id, ws=4):
         '''
         In this function we get the distributed representation of words based on
         cooccurrence along windows of size ws. This is the most
@@ -88,16 +134,10 @@ class WordRelate:
         :return:
          - self.vrm: a vectorized representation of the words
         '''
-        
-        #for text in self.collections[collection_id]:
-        #	print(self.collections[collection_id])
-        #    text = np.array([w for w in text if w in self.voc[collection_id]], dtype=object)
-        #    print(text)
-        text=self.read_collection(collection_id)
-        text=[word for word in text if word not in sw]
-        self.get_voc(collection_id,sw)
-        voc_size = len(self.voc)
+        voc_size = len(self.voc[collection_id])
         self.vrm[collection_id] = np.zeros((voc_size, voc_size))
+        for text in self.collections[collection_id]:
+            text = np.array([w for w in text if w in self.voc[collection_id]], dtype=object)
             # -----------------------------------
             # TODO
             # For each word in text, build a window
@@ -118,44 +158,37 @@ class WordRelate:
             # ./home_dir/data/tests
             # np.array_equal
             # -----------------------------------
-		
-        ventanas=pd.DataFrame(columns=['centro','vi4','vi3','vi2','vi1','vd1','vd2','vd3','vd4'])
-        for i in range(ws,len(text)-ws): 
-        	centro=self.voc[text[i]]
-        	a=[]
-        	a.append(centro)
-        	for h in range (i-ws,i+ws+1): 
-        		if h!=i:
-        			a.append(self.voc[text[h]])#posiciones en el voc 
-        	df=pd.DataFrame([a],columns=['centro','vi4','vi3','vi2','vi1','vd1','vd2','vd3','vd4'])
-        	ventanas=ventanas.append(df,ignore_index=True)
-            
-        
-        
-        for i in range(voc_size):
-            v=ventanas.loc[ventanas['centro']==i]
-            for j in range(voc_size):
-                if (len(v)>0):
-                    rep=0
-                    for k in range(len(v)):
-                        for l in ventanas.columns.values[1:2*ws]:
-                            val=(v.loc[[v.index.values[k]],[l]]).iat[0,0]#valor
-                            if (val==j):
-                                rep=rep+1
-                    self.vrm[collection_id][i][j]=rep#i=centro, j=palabras en la ventana 
+            # Your code goes here ( 1 ~ 10 lines)
+            '''
+            indexes = []
+            svoc = self.voc[collection_id]
+            for i,w in enumerate(text):
+                index = np.zeros(3)
+                if i < ws:
+                    window = [j for j in range(i+ws+1) if j!=1]
+                    index[1] = [svoc for w2 in window]
                 else:
-                    self.vrm[collection_id][i][j]=0
-        vrmdf=pd.DataFrame(self.vrm[collection_id],columns=self.voc.keys(),index=self.voc.keys())
-        print(vrmdf)
-
-            #for word, (related, values) in indexes:
+                    window = [j for j in range(i-ws,i+ws+1) if j!=1]
+                    index[1] = [svoc[text[w2]] for w2 in window]
+                words = [text[p] for p in window]
+                index[0] = svoc[w]
+                index[2] = [words.count(words[w3]) for w3 in window]
+                indexes.append(index[0],(index[1],index[2]))
+            '''
+            indexes = [(self.voc[collection_id][w],
+                        np.unique(self.voc[collection_id][text[list(range(max(0, i - ws), i)) +
+                                                               list(range(i+1, min(i + (ws + 1), len(text))))]].values,
+                                  return_counts=True))
+                       for i, w in enumerate(text)]
+            
+            for word, (related, values) in indexes:
                 # -----------------------------------
                 # TODO
                 # Update the count values in self.vrm.
                 # (10 points)
                 # -----------------------------------
-
                 # Your code goes here (1 line)
+                self.vrm[collection_id][word, related] += values
 
 
     def ppmi_reweight(self, collection_id):
@@ -169,15 +202,23 @@ class WordRelate:
         # expected_i_j = (row_sum_i*col_sum_j)/tot_sum
         # (15 points)
         # -----------------------------------
-
-        r=self.vrm[collection_id].sum(axis=1)
-        c=self.vrm[collection_id].sum(axis=0)
-        t=self.vrm[collection_id].sum()
-        M = np.zeros((len(self.vrm[collection_id]), len(self.vrm[collection_id])))
-        for i in range(len(self.vrm[collection_id])): 
-            for j in range(len(self.vrm[collection_id])): 
-                M[i][j]=(r[i]*c[j])/t
-
+        # Your code goes here (~ 1 - 4 lines)
+        '''
+        lgt = len(self.vrm[collection_id])
+        matVrm = self.vrm[collection_id]
+        expected = np.zeros((lgt,lgt))
+        for i in range(lgt):
+            for j in range(lgt):
+                expected[i,j] = (sum(matVrm[i])*sum(matVrm[:,j]))/sum(sum(matVrm))
+        '''
+        sum_rows = self.vrm[collection_id].sum(axis=1, keepdims=True)
+        sum_cols = self.vrm[collection_id].sum(axis=0, keepdims=True)
+        sum_tot = self.vrm[collection_id].sum()
+        expected = np.dot(sum_rows, sum_cols)/sum_tot
+        
+        with np.errstate(divide='ignore'):
+            log_vals = np.log(self.vrm[collection_id]/expected)
+        self.vrm[collection_id] = np.maximum(log_vals, 0)
 
     def dim_redux(self, collection_id, dim_reducer='pca'):
         '''
@@ -188,37 +229,26 @@ class WordRelate:
             self.reduced_vrm[collection_id] = TSNE(n_components=2,
                                                    init='random').fit_transform(self.vrm[collection_id])
         if dim_reducer == 'pca':
-            
-            try:
-                self.reduced_vrm[collection_id] = PCA(n_components=2).fit_transform(self.vrm[collection_id])
-            except(ValueError):
-                print("error en dim redux")
-                pass
+            self.reduced_vrm[collection_id] = PCA(n_components=2).fit_transform(self.vrm[collection_id])
+
 
     def plot_reps(self):
         '''
         Plots the reduced representations computed for each collection
         :return:
         '''
-
         if not os.path.isdir(self.fig_path):
             print('Making figure directory')
             os.mkdir(self.fig_path)
-        
-        try:
-            for i, collection in enumerate(self.collections.keys()):
-                fig, ax = plt.subplots(figsize=(12, 10))
-                x = self.reduced_vrm[collection][:, 0]
-                y = self.reduced_vrm[collection][:, 1]
-                ax.scatter(x, y)
-                print("1st for works")
-                for i, txt in enumerate(self.ivoc):
-                    ax.annotate(txt, (x[i], y[i]))
-                print(f'saving figure {collection}')
-                fig.savefig(os.path.join(self.fig_path, f'{collection}.png'))
-        except(KeyError):
-            print("error en plot reps")
-            pass
+        for i, collection in enumerate(self.collections.keys()):
+            fig, ax = plt.subplots(figsize=(12, 10))
+            x = self.reduced_vrm[collection][:, 0]
+            y = self.reduced_vrm[collection][:, 1]
+            ax.scatter(x, y)
+            for i, txt in enumerate(self.ivoc[collection]):
+                ax.annotate(txt, (x[i], y[i]))
+            print(f'saving figure {collection}')
+            fig.savefig(os.path.join(self.fig_path, f'{collection}.png'))
 
 
     def make_bulk_collections(self):
@@ -264,24 +294,31 @@ class WordRelate:
         for file in os.listdir(collection_path):
             file_path = os.path.join(collection_path, file, 'main_text.txt')
             # Take care of gzipped files
-            #if re.match(r'^gzip', magic.from_file(file_path)):
-             #   with gzip.open(file_path, 'rb') as f:
-              #      lines = f.read()
-            #else:
-            with open(file_path, encoding="utf-8") as f:
+            if re.match(r'^gzip', magic.from_file(file_path)):
+            #if re.match(r'^gzip', get_ipython().magic(file_path)):    
+                with gzip.open(file_path, 'rb') as f:
+                    lines = f.read()
+            else:
+                with open(file_path, encoding="utf-8") as f:
                     # Read lines and process them. (notice we are removing empty lines)
-                lines = f.readlines()
-            for line in lines:
-            	if line:
-            		l=self.proc_line(line)
-            		l.insert(0,"START")
-            		l.insert(len(l),"END")
-            		texts.extend(l) 
-    
+                    lines = f.readlines()
+        # -----------------------------------
+        # TODO
+        # - Call proc line on each line of input
+        # - Make sure to add 'START' and 'END' tokens to the start and end of each sentence.
+        # - Preserve only non empty lines.
+        # (15 points)
+        # -----------------------------------
 
+        # Your code goes here (~ 1 - 3 lines)
+        '''
+        texts.append('start')
+        texts.append([self.proc_line(line) for line in lines])
+        if( texts.pop(len(texts)-1) =='start'):texts.remove(len(texts)-1)
+        '''
+        texts += [['START'] + self.proc_line(l) + ['END'] for l in lines if self.proc_line(l)]
         # Add texts to the collections.
         self.collections[collection_id] = texts
-        return self.collections[collection_id]
 
 
 if __name__ == '__main__':
@@ -293,20 +330,15 @@ if __name__ == '__main__':
                         choices=collections)
     args = parser.parse_args()
     # Read stopwords
+    # with open('data\stop_words\stopwords.txt') as f:
     with open('./data/stop_words/stopwords.txt') as f:
         stopwords = f.read().split('\n')
     # Instantiate WordRelate object
     wc = WordRelate()
     # Read collection argument
     collection = args.collection
-    wc.read_collection('01')
-    wc.get_voc('01',stopwords)
-    wc.dist_rep('01',stopwords)
-    wc.ppmi_reweight('01')
-    wc.dim_redux('01')
-    wc.plot_reps()
-    
-     # -----------------------------------
+
+    # -----------------------------------
     # TO DO
     # -----------------------------------
     # 1.- read collection 00
@@ -322,4 +354,13 @@ if __name__ == '__main__':
     # ./home_dir/figs/.
     # -----------------------------------
     
+
+    # Your code goes here (~ 7 lines)
+    wc.read_collection(collection)
+    wc.get_voc(collection, sw=stopwords)
+    wc.dist_rep(collection, ws=3)
+    wc.ppmi_reweight(collection)
+    wc.dim_redux(collection)
+    wc.plot_reps()
+    # Maybe code went up because of migration c:
     
