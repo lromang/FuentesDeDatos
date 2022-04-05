@@ -59,7 +59,8 @@ class WordRelate:
         # line is outputed as it is.
         # (10 points)
         # -----------------------------------
-        parsed_lines = [re.search(r'([a-zA-z]+)', x.lower()).group(0) for x in line.split()]  # Your code goes here (~ 1 line)
+        parsed_lines = [re.search(r'([a-zA-z]+)', x.lower()).group(0) for x in line.split()]
+        # Your code goes here (~ 1 line)
         return parsed_lines
 
 
@@ -85,26 +86,23 @@ class WordRelate:
         palabras = []
         for text in self.collections[collection_id]:
             palabras = palabras + [t for t in text if t not in sw]
-         
-        voc = {}
-        for p in palabras:
-            try:
-                voc[p] = voc[p]+1
-            except: 
-                voc[p] = 1
         
-        voc = {k:v  for k, v in sorted(voc.items(), key=lambda item: item[1])}
-        palabras = list(voc.keys())[0:top_freq_words]
-        palabras = palabras[::-1]
-        
-        # Make order monotonic to improve performance.
-        voc = {k: i for i,k in enumerate(palabras)}
-        self.voc[collection_id] = pd.Series({k:v for k,v in sorted(voc.items(), key=lambda item: item[0])})
-        ivoc = {i:k for i,k in enumerate(palabras)}
-        # Get inverse index for word vocs
-        self.ivoc[collection_id] = pd.Series({v:k for k,v in sorted(voc.items(),key=lambda item: item[1])})
-        print(f'Monotonic index:{self.voc[collection_id].index.is_monotonic}')
-        return list(voc.keys())
+        ##Este cacho (las siguientes 4 instrucciones) es sacado de su versión
+        palabrasCount = pd.Series(palabras).value_counts()
+        palabras = palabrasCount[0:top_freq_words]
+
+                
+        # # # Make order monotonic to improve performance.
+        self.voc[collection_id] = pd.Series(range(len(palabras)), index=palabras.index).sort_index()
+
+        #Get inverse index for word vocs
+        self.ivoc[collection_id] = pd.Series(self.voc[collection_id].index,
+                                             index=self.voc[collection_id].values).sort_index()
+        ##Aquí termina lo sacado de su versión
+
+        # # Get inverse index for word vocs
+        print(f'Monotonic index:{self.voc[collection_id].index.is_monotonic}')        
+        return list(self.ivoc[collection_id].index)
 
 
     def dist_rep(self, collection_id, ws=4):
@@ -121,7 +119,7 @@ class WordRelate:
         voc_size = len(self.voc[collection_id])
         self.vrm[collection_id] = np.zeros((voc_size, voc_size))
         for text in self.collections[collection_id]:
-            texto = np.array([w for w in text if w in self.voc[collection_id]], dtype=object)
+            texto = [w for w in text if w in self.voc[collection_id]]
             
             # -----------------------------------
             # TODO
@@ -146,38 +144,45 @@ class WordRelate:
             
             # Your code goes here ( 1 ~ 10 lines)
             #Build the Window
+
             indexes = []
             for i,w in enumerate(texto):
-                if i<ws:
-                    if i+ws+1>len(texto):
-                        r = len(texto)-i
-                    else:
-                        r = i+ws+1
-                    window = [j for j in range(r) if j!=i]
-                    palabras = [texto[p] for p in window]
-                elif i>=len(texto)-ws:
-                    window = [j for j in range(i-ws,len(texto)) if j!=i]
-                    palabras = [texto[p] for p in window]
+                if ws*2 > len(texto):
+                    window = [j for j in range(0,len(texto)) if j!=i]
+                    words = [texto[p] for p in window]
                 else:
-                    window = [j for j in range(i-ws,i+ws+1) if j!=i]
-                    palabras = [texto[p] for p in window]
+                    if i<=ws:
+                        window = [j for j in range(0,ws+i+1) if j!=i]
+                        words = [texto[p] for p in window]
+                    else:
+                        if i+ws > len(texto):
+                            window = [j for j in range(i-ws,len(texto)) if j!=i]
+                            words = [texto[p] for p in window]
+                        else:
+                            window = [j for j in range(i-ws,min((ws+i+1),len(texto))) if j!=i]
+                            words = [texto[p] for p in window]    
+        
                 index = self.voc[collection_id][w]
+                
                 index1 = []
                 index2 = []
+                    
                 for v in window:
                     index1.append(self.voc[collection_id][texto[v]])
-                    index2.append(palabras.count(texto[v]))
+                    index2.append(words.count(texto[v]))
                 indexes.append((index,(index1,index2)))
-                               
+            
             for word,(related,values) in indexes:
+                print(word)
                 # -----------------------------------
                 # TODO
                 # Update the count values in self.vrm.
                 # (10 points)
                 # -----------------------------------
                 
-                for i,r in enumerate(related):
-                    self.vrm[collection_id][word][r] += values[i]
+                #Esta línea la puse como usted aunque creo que ya funcionaba la que yo tenía
+                self.vrm[collection_id][word,related] = self.vrm[collection_id][word,related] + values
+
         return self.vrm[collection_id]
 
     def ppmi_reweight(self, collection_id):
@@ -201,7 +206,6 @@ class WordRelate:
         with np.errstate(divide='ignore'):
             log_vals = np.log(self.vrm[collection_id]/expected)
         self.vrm[collection_id] = np.maximum(log_vals, 0)
-    
     
     def dim_redux(self, collection_id, dim_reducer='pca'):
         '''
@@ -272,6 +276,9 @@ class WordRelate:
         return correlation
 
     def read_collection(self, collection_id):
+        print(self.data_path)
+        print(type(self.data_path))
+        print(collection_id)
         collection_path = os.path.join(self.data_path, collection_id)
         # Read each file in collection
         texts = []
@@ -293,13 +300,12 @@ class WordRelate:
         # (15 points)
         # -----------------------------------
         
-        # Your code goes here (~ 1 - 3 lines)
+        #Your code goes here (~ 1 - 3 lines)
         for l in lines:
-            r = ['START']
-            r = r + self.proc_line(l)
-            r = r + ['END']
-            texts.append(r)
-
+             r = ['START']
+             r = r + self.proc_line(l)
+             r = r + ['END']
+             texts.append(r)
         # Add texts to the collections.
         self.collections[collection_id] = texts
 
@@ -336,11 +342,11 @@ if __name__ == '__main__':
     # such as the one displayed in:
     # ./home_dir/figs/.
     # -----------------------------------
-    collection = '00'
+    collection = 'proj_eval'
     # Your code goes here (~ 7 lines)
     wc.read_collection(collection)
     palabras = wc.get_voc(collection, stopwords)
-    x = wc.dist_rep(collection)
+    x = wc.dist_rep(collection,4)
     x = pd.DataFrame(x.T,index=palabras,columns=palabras)
     wc.dim_redux(collection)
     wc.ppmi_reweight(collection)
