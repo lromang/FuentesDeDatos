@@ -4,14 +4,11 @@ import gzip
 import magic
 import numpy as np
 import pandas as pd
-import json
 from argparse import ArgumentParser
 import matplotlib.pyplot as plt
 from sklearn.decomposition import PCA
 from sklearn.manifold import TSNE
 from scipy import spatial
-
-
 
 class WordRelate:
     """
@@ -36,31 +33,27 @@ class WordRelate:
         # - reduced_vrm
         # (5 points)
         # -----------------------------------
-        
-        self.voc, self.ivoc, self.collections, self.vrm, self.reduced_vrm = {}, {}, {}, {}, {}
+        self.voc, self.ivoc, self.collections, self.vrm, self.reduced_vrm= {}, {}, {}, {}, {} #Cambiamos la inicialización de parámetros, antes lo teníamos por línea 
         print(f"Files found in storage: \n {os.listdir(self.data_path)}")
 
 
     def proc_line(self, line):
-        '''
-        This function parses each input line:
-        - sets every word into lowercase
-        - remove non words
-        - remove empty lines
-        - returns a list of words.
-        :param line: the line to process
-        :return: processed line
-        '''
-        # -----------------------------------
-        # TODO
-        # complete the parsers, currently, each word
-        # line is outputed as it is.
-        # (10 points)
-        # -----------------------------------
-        parsed_line = [re.sub('[^a-zA-Z]','',x).lower() for x in line.split()]  # Your code goes here (~ 1 line)
-
-        return parsed_line
-        #return [y for y in [re.sub(r'[^A-Za-z ]+', '', x.lower()) for x in line.split() if x] if len(y) > 0]
+    	'''
+    	This function parses each input line:
+    	- sets every word into lowercase
+    	- remove non words
+    	- remove empty lines
+    	- returns a list of words.
+    	:param line: the line to process
+    	:return: processed line
+    	'''
+    	# -----------------------------------
+    	# TODO
+    	# complete the parsers, currently, each word
+    	# line is outputed as it is.
+    	# (10 points)
+    	# -----------------------------------
+    	return [x for x in re.sub(r'[^a-zA-Z\s]', '',line).lower().split()] 
 
 
     def get_voc(self, collection_id, sw, top_freq_words=2000):
@@ -86,8 +79,9 @@ class WordRelate:
         voc = voc[:top_freq_words]
         # Obtener palabras con mas frecuencia
         # Make order monotonic to improve performance.
-        self.voc[collection_id] = pd.Series(range(len(voc)), index=voc.index).sort_index()
+        self.voc[collection_id] = pd.Series(range(len(voc)), index=voc.index).sort_index()#Convertimos los voc y ivoc en series en vez de diccionarios como lo teníamos antes 
         # Get inverse index for word vocs
+        print(self.voc[collection_id])
         self.ivoc[collection_id] = pd.Series(self.voc[collection_id].index,
                                              index=self.voc[collection_id].values).sort_index()
         print(f'Monotonic index:{self.voc[collection_id].index.is_monotonic}')
@@ -106,6 +100,7 @@ class WordRelate:
         '''
         voc_size = len(self.voc[collection_id])
         self.vrm[collection_id] = np.zeros((voc_size, voc_size))
+        ventanas=pd.DataFrame()
         for text in self.collections[collection_id]:
             text = np.array([w for w in text if w in self.voc[collection_id]], dtype=object)
             # -----------------------------------
@@ -128,20 +123,33 @@ class WordRelate:
             # ./home_dir/data/tests
             # np.array_equal
             # -----------------------------------
-            indexes = [(self.voc[collection_id][w],
-                        np.unique(self.voc[collection_id][text[list(range(max(0, i - ws), i)) +
-                                                               list(range(i+1, min(i + (ws + 1), len(text))))]].values,
-                                  return_counts=True))
-                       for i, w in enumerate(text)]
-            for word, (related, values) in indexes:
+            #indexes = [(self.voc[collection_id][w],
+            #            np.unique(self.voc[collection_id][text[list(range(max(0, i - ws), i)) +
+            #                                                   list(range(i+1, min(i + (ws + 1), len(text))))]].values,
+            #                      return_counts=True))
+            #           for i, w in enumerate(text)]
+            #for word, (related, values) in indexes:
                 # -----------------------------------
                 # TODO
                 # Update the count values in self.vrm.
                 # (10 points)
                 # -----------------------------------
-                self.vrm[collection_id][word, related] += values
-
-
+             #   self.vrm[collection_id][word, related] += values
+             
+             #Antes en esta función teníamos cuatro for's lo que hacía que el programa fuera muy ineficiente y al llenar la matriz se tardaba mucho 
+             #Al ver la solución, nos dimos cuenta de que lo podíamos hacer más eficiente 
+            for i in range(len(text)):
+            	a=[self.voc[collection_id][text[i]]]
+            	for h in range (max(0,i-ws),min(i+ws+1,len(text))): 
+            		if h!=i:
+            			a.append(self.voc[collection_id][text[h]])#posiciones en el voc 
+            	df=pd.DataFrame([a])
+            	ventanas=ventanas.append(df,ignore_index=True)
+        for i in range(len(ventanas)):
+        	for j in range(1,len(ventanas.columns)):
+        		if pd.isna(ventanas.iat[i,j])==False and pd.isna(ventanas.iat[i,0])==False:#Otro problema que teníamos era que en la matriz aparecían NANs y el programa fallaba por lo que le metimos este if para cuidar que no fueran NANs
+        			self.vrm[collection_id][int(ventanas.iat[i,0]), int(ventanas.iat[i,j])] += 1
+        
     def ppmi_reweight(self, collection_id):
         '''
         In this section we apply ppmi transformation to vrm
@@ -153,21 +161,15 @@ class WordRelate:
         # expected_i_j = (row_sum_i*col_sum_j)/tot_sum
         # (15 points)
         # -----------------------------------
-
-        # np.einsum no sirve porque no emula el keepdims=True
-        # de seguro se pueden hacer más talacha para que queden bien las dimensiones,
-        # but it ain't worth it/suena ineficiente.
-
-        #row_sum = np.einsum('ij->j',self.vrm[collection_id])
-        row_sum = self.vrm[collection_id].sum(axis=1, keepdims=True)
-        #col_sum = np.einsum('ij->j',self.vrm[collection_id])
-        col_sum = self.vrm[collection_id].sum(axis=0, keepdims=True)
-        tot_sum = self.vrm[collection_id].sum()
-        expected = np.dot(row_sum,col_sum)/tot_sum
+        
+        r=self.vrm[collection_id].sum(axis=1,keepdims=True)
+        c=self.vrm[collection_id].sum(axis=0,keepdims=True)
+        t=self.vrm[collection_id].sum()
+        M = np.dot(r,c)/t
 
         with np.errstate(divide='ignore'):
-            log_vals = np.log(self.vrm[collection_id]/expected)
-        self.vrm[collection_id] = np.maximum(log_vals, 0)
+            log_vals = np.log(self.vrm[collection_id]/M)
+        self.vrm[collection_id] = np.maximum(log_vals, 0) 
 
     def dim_redux(self, collection_id, dim_reducer='pca'):
         '''
@@ -260,13 +262,7 @@ class WordRelate:
             # - Preserve only non empty lines.
             # (15 points)
             # -----------------------------------
-            #texts += [['START'] + self.proc_line(l) + ['END'] for l in lines if self.proc_line(l)]
-            for line in lines:
-                to_add = self.proc_line(line)
-                to_add.append('END')
-                to_add.insert(0,'START')
-                texts.append(to_add)
-
+            texts += [['START'] + self.proc_line(l) + ['END'] for l in lines if self.proc_line(l)]
         # Add texts to the collections.
         self.collections[collection_id] = texts
 
@@ -284,6 +280,7 @@ if __name__ == '__main__':
     with open(sw_path) as f:
         stopwords = f.read().split('\n')
     # Instantiate WordRelate object
+    wc = WordRelate()
     # Read collection argument
     # collection = args.collection
     collection = args.collection
@@ -300,10 +297,15 @@ if __name__ == '__main__':
     # To test your execution run:
     # ./wordrelatedness --collection '[collection_id]'
     # -----------------------------------
-    wr = WordRelate()
-    wr.read_collection(collection)
-    wr.get_voc(collection, sw=stopwords)
-    wr.dist_rep(collection)
-    wr.ppmi_reweight(collection)
-    wr.dim_redux(collection)
-    wr.plot_reps()
+    wc.read_collection(collection)
+    wc.get_voc(collection, sw=stopwords)
+    wc.dist_rep(collection, ws=3)
+    wc.ppmi_reweight(collection)
+    wc.dim_redux(collection)
+    wc.plot_reps()
+    #wc.read_collection('proj_eval')
+    #wc.get_voc('proj_eval', sw=stopwords)
+    #wc.dist_rep('proj_eval', ws=3)
+    #wc.ppmi_reweight('proj_eval')
+    #wc.dim_redux('proj_eval')
+    #wc.plot_reps()
