@@ -40,24 +40,16 @@ class WordRelate:
         # -----------------------------------
 
         # Your code goes here (~ 1 - 5 lines)
-        self.content = {}
         self.voc = {}
         self.ivoc = {}
         self.collections = {}
         self.vrm = {}
         self.reduced_vrm = {}
-        self.words = {}
 
         print(f"Files found in storage: \n {os.listdir(self.data_path)}")
         collections_found = os.listdir(self.data_path)
         for folder in collections_found:
             self.collections[folder] = None
-
-    def get_collections(self):
-        return self.collections
-
-    def print_collections(self):
-        print(self.collections)
 
     @staticmethod
     def proc_line(line):
@@ -78,7 +70,7 @@ class WordRelate:
         # -----------------------------------
 
         # Esto ya debe recibir la línea en lower
-        return re.sub(rf"([0-9]|[{string.punctuation}])", "", str(line)).split()
+        return re.sub(rf"[^A-Za-z ]+", "", str(line)).split()
 
     def get_voc(self, collection_id, sw, top_freq_words=2000):
         """
@@ -106,10 +98,11 @@ class WordRelate:
         # Luego ordenamos por número de apraciones
         # Luego les damos el indice por orden de apraciones
         # Nos quedamos solo con las primeras 2000 palabras
-
-        aux = pd.value_counts(self.content[collection_id]).iloc[
-              0:min(top_freq_words, len(self.words[collection_id]))].sort_index()
-        self.voc[collection_id] = pd.Series({aux.index[i]: i for i in range(len(aux))})
+        content = [x for line in self.collections[collection_id] for x in line if x not in sw]
+        content = np.array(content)
+        aux = pd.value_counts(content).iloc[
+              0:min(top_freq_words, len(np.unique(content)))]
+        self.voc[collection_id] = pd.Series({aux.index[i]: i for i in range(len(aux))}).sort_index()
         self.ivoc[collection_id] = pd.Series(self.voc[collection_id].index,
                                              index=self.voc[collection_id].values).sort_index()
         print(f'Monotonic index:{self.voc[collection_id].index.is_monotonic}')
@@ -128,16 +121,17 @@ class WordRelate:
         voc_size = len(self.voc[collection_id])
         self.vrm[collection_id] = np.zeros((voc_size, voc_size))
 
-        for text in self.collections[collection_id]:
+        for line in self.collections[collection_id]:
             indexes = []
 
-            for line in text:
-                line = np.array([w for w in line if w in self.voc[collection_id]], dtype=object)
-                for index in range(0, len(line)):
-                    aux = np.concatenate(
-                        (line[max(0, index - ws):index], line[index + 1: (min(len(line), index + ws) + 1)]), axis=0)
-                    indexes.append(
-                        (self.voc[collection_id][line[index]], np.array([self.voc[collection_id][x] for x in aux])))
+            line = np.array([w for w in line if w in self.voc[collection_id]], dtype=object)
+                
+            for index in range(0, len(line)):
+                aux = np.concatenate(
+                    (line[max(0, index - ws):index], line[index + 1: (min(len(line), index + ws) + 1)]), axis=0)
+                indexes.append(
+                    (self.voc[collection_id][line[index]], np.array([self.voc[collection_id][x] for x in aux])))
+                        
             indexes = np.array(indexes, dtype=object)
             for word in indexes:
                 for values in word[1]:
@@ -237,9 +231,8 @@ class WordRelate:
         collection_path = f"{self.data_path}/{collection_id}"
         # Read each file in collection
         texts = []
-        content = []
         for file in os.listdir(collection_path):
-            file_path = os.path.join(collection_path, file)
+            file_path = os.path.join(collection_path, file, 'main_text.txt')
             # Take care of gzipped files
             if re.match(r'^gzip', magic.from_file(file_path)):
                 with gzip.open(file_path, 'rb') as fa:
@@ -258,16 +251,12 @@ class WordRelate:
 
             # Your code goes here (~ 1 - 3 lines)
             to_delete = '\n'
-            lines = [self.proc_line(f"START {re.sub(r'to_delete', '', x).lower()} END") for x in lines if
+            texts += [self.proc_line(f"START {re.sub(r'to_delete', '', x).lower()} END") for x in lines if
                      len(self.proc_line(x)) > 2]
-            content += [x for line in lines for x in line if x not in sw]
-            texts.append(np.array(lines, dtype=object))
 
             # Add texts to the collections.
         # Texts es una lista que tiene listas (Cada una corresponde a un texto) y cada lista tiene listas con las
         # palabras de cada línea
-        self.content[collection_id] = np.array(content)
-        self.words[collection_id] = np.unique(content)
         self.collections[collection_id] = np.array(texts, dtype=object)
 
 
@@ -306,11 +295,10 @@ if __name__ == '__main__':
     # Your code goes here (~ 7 lines)
 
     # Read collection 130
-    collection = 76
+    collection = collection
 
     wc.read_collection(collection, stopwords)
     wc.get_voc(collection_id=collection, sw=stopwords)
     wc.dist_rep(collection_id=collection)
     wc.ppmi_reweight(collection_id=collection)
     wc.dim_redux(collection_id=collection)
-    wc.plot_reps()
