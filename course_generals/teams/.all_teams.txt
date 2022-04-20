@@ -2,4 +2,4 @@ EquipoA,18
 EquipoB,9
 EquipoC,7
 EquipoSobreescrito,12
-RegistroEquipo,17
+RegistroEquipo,18
