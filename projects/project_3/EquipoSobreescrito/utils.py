@@ -16,7 +16,7 @@ def get_bigrams(words):
     Implement get_bigrams
     [10 points]
     '''
-    bigrams =  [words[x:x+2] for x in range(0, len(words)-1,1)]  # YOUR CODE GOES HERE
+    bigrams =  [words[x:x+2] for x in range(0, len(words),1)]  # YOUR CODE GOES HERE
     return bigrams
 
 def prefix_neg(words):

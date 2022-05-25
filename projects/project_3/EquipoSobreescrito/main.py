@@ -120,6 +120,7 @@ class SentClass:
 
         [10 points]
         '''
+        
         self.data['bigrams'] = get_bigrams(self.data.words)
         self.data['neg_words'] = prefix_neg(self.data.words)
         self.data['neg_bigrams'] = get_bigrams(self.data.neg_words)
@@ -140,7 +141,9 @@ class SentClass:
         feature_cols = ['words', 'bigrams', 'neg_words', 'neg_bigrams']
         for i, feature in enumerate(feature_cols):
             print(f'Processing feature: {feature}')
-            # YOUR CODE GOES HERE
+            pos, neg = self.gen_voc_features(feature)
+            self.feature_voc[f'f{i}']['pos']= pos
+            self.feature_voc[f'f{i}']['neg']= neg
 
     def text_to_features(self, text):
         '''
@@ -153,9 +156,12 @@ class SentClass:
                     'f2_pos': 0, 'f2_neg': 0,
                     'f3_pos': 0, 'f3_neg': 0}
         words = proc_text(text, self.sw)
+        print('Words done!')
         neg_words = prefix_neg(words)
+        print('Neg words done!')
         data_features = {'f0': words, 'f1': get_bigrams(words),
                          'f2': neg_words, 'f3': get_bigrams(neg_words)}
+        print('Bigrams done!')
         for i in range(4):
             features[f'f{i}_pos'] = np.mean([self.feature_voc[f'f{i}']['pos'][w]
                                              if w in self.feature_voc[f'f{i}']['pos'] else 0
@@ -194,6 +200,7 @@ class SentClass:
         :param text_col: the column containing the text to be classified
         :param sent_col: the column containing the true sentiment labels
         '''
+        print('Creating feature matrix...')
         X = self.create_feature_matrix(self.data, text_col)
         self.dim_redux = PCA(n_components=2).fit(X)
         X_redux = self.dim_redux.transform(X)
@@ -213,9 +220,18 @@ if __name__ == '__main__':
         sw = f.read().split('\n')
     home_dir = '.'
     sc = SentClass(os.path.join(home_dir, 'data'), sw)
+    print('Reading data...')
     sc.read_data('sentiment')
-    print(sc.data)
+    print('Data Read!')
+    print('Cleaning Text...')
     sc.clean_text('review')
-    print(sc.data.words)
+    print('Text cleaned!')
+    print('Gettic voc features...')
     sc.get_feature_voc()
+    print('Voc Features Aquired!')
+    print('Columns:')
+    print(sc.data.columns)
+    print('Training model...')
     sc.train_model('review', 'clean_sentiment')
+    print('Model trained!')
+    print('Bye!')
