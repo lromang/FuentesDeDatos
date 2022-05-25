@@ -156,19 +156,24 @@ class SentClass:
                     'f2_pos': 0, 'f2_neg': 0,
                     'f3_pos': 0, 'f3_neg': 0}
         words = proc_text(text, self.sw)
-        print('Words done!')
         neg_words = prefix_neg(words)
-        print('Neg words done!')
         data_features = {'f0': words, 'f1': get_bigrams(words),
                          'f2': neg_words, 'f3': get_bigrams(neg_words)}
-        print('Bigrams done!')
         for i in range(4):
-            features[f'f{i}_pos'] = np.mean([self.feature_voc[f'f{i}']['pos'][w]
-                                             if w in self.feature_voc[f'f{i}']['pos'] else 0
-                                             for w in data_features[f'f{i}']])
-            features[f'f{i}_neg'] = np.mean([self.feature_voc[f'f{i}']['neg'][w]
-                                             if w in self.feature_voc[f'f{i}']['neg'] else 0
-                                             for w in data_features[f'f{i}']])
+            if i in [0,2]:
+                features[f'f{i}_pos'] = np.mean([self.feature_voc[f'f{i}']['pos'][w]
+                                                 if w in self.feature_voc[f'f{i}']['pos'] else 0
+                                                 for w in data_features[f'f{i}']])
+                features[f'f{i}_neg'] = np.mean([self.feature_voc[f'f{i}']['neg'][w]
+                                                 if w in self.feature_voc[f'f{i}']['neg'] else 0
+                                                 for w in data_features[f'f{i}']])
+            else:
+                features[f'f{i}_pos'] = np.mean([self.feature_voc[f'f{i}']['pos'][tuple(w)]
+                                                 if tuple(w) in self.feature_voc[f'f{i}']['pos'] else 0
+                                                 for w in data_features[f'f{i}']])
+                features[f'f{i}_neg'] = np.mean([self.feature_voc[f'f{i}']['neg'][tuple(w)]
+                                                 if tuple(w) in self.feature_voc[f'f{i}']['neg'] else 0
+                                                 for w in data_features[f'f{i}']])
         return pd.DataFrame(features, index=[1])
 
     def create_feature_matrix(self, df, text_col):
